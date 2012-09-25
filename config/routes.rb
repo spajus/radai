@@ -4,6 +4,7 @@ Radai::Application.routes.draw do
   # Need to remap the following route due to this bug:
   # https://github.com/rails/rails/issues/1769
   post "specialistas" => "specialist#create", as: "create_specialist"
+  match "specialistas/registracija" => "specialist#create_complete"
 
   root to: "home#index"
 

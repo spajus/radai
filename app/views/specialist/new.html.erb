@@ -4,19 +4,21 @@
     <div class="span7">
       <%= form_for @specialist, html: {class: "form-horizontal well"}, url: create_specialist_path do |f| %>
 
+          <%= render "shared/form_errors", object: @specialist %>
+
           <legend>Atliekami darbai</legend>
 
           <div class="control-group">
             <label class="control-label" for="todo">Pagrindinė paslauga</label>
             <div class="controls">
-              <%= f.select :service_type_id, options_for_select(service_types()) %>
+              <%= f.collection_select :service_type_select, ServiceType.all, :id, :title, prompt: true %>
             </div>
           </div>
 
           <div class="control-group">
             <label class="control-label" for="todo">Kitos paslaugos</label>
             <div class="controls">
-              <%= select_tag 'extra_services', options_for_select(service_types()), { multiple: true, size: 10} %>
+              <%= f.collection_select :extra_services_select, ServiceType.all, :id, :title, {}, multiple: true, size: 10 %>
             </div>
           </div>
 

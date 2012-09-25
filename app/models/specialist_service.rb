@@ -1,3 +1,4 @@
 class SpecialistService < ActiveRecord::Base
-  attr_accessible :service_type_id, :specialist_id
+  belongs_to :service_type
+  belongs_to :specialist
 end

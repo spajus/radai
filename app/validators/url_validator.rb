@@ -18,7 +18,7 @@ class UrlValidator < ActiveModel::EachValidator
 
     @domain = options[:domain]
     @permissible_schemes = options[:schemes] || %w(http https)
-    @error_message = options[:message] || 'is not a valid url'
+    @error_message = options[:message] || I18n.translate("activerecord.errors.url.invalid")
     @allow_nil = options[:allow_nil]
     @allow_empty = options[:allow_empty]
   end
