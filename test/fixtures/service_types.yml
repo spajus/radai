@@ -13,6 +13,10 @@ s0030:
   title: Apšiltinimas
   slug: apsiltinimas
   approved: true
+s0035:
+  title: Apželdinimas
+  slug: apzeldinimas
+  approved: true
 
 s0040:
   title: Architektūra ir dizainas
@@ -20,11 +24,6 @@ s0040:
   approved: true
 
 s0050:
-  title: Dažymas ir apdaila
-  slug: dazymas-apdaila
-  approved: true
-
-s0060:
   title: Dažymas ir apdaila
   slug: dazymas-apdaila
   approved: true
@@ -62,6 +61,10 @@ s0140:
   title: Izoliacijos įrengimas
   slug: izoliacijos-irengimas
   approved: true
+s0350:
+  title: Įrankiai
+  slug: irankiai
+  approved: true
 s0150:
   title: Kaminai ir židiniai
   slug: kaminai-zidiniai
@@ -70,21 +73,17 @@ s0160:
   title: Kilimai ir parketas
   slug: kilimai-parketas
   approved: true
-s0170:
-  title: Kraštovaizdžio sodininkystė
-  slug: krastovaizdzio-sodininkyste
-  approved: true
 s0180:
-  title: Langų įrengimas
-  slug: langu-irengimas
+  title: Langų montavimas
+  slug: langu-montavimas
   approved: true
 s0190:
   title: Loftų perdarymas
   slug: loftu-perdarymas
   approved: true
 s0200:
-  title: Mūrijimas
-  slug: murijimas
+  title: Mūrijimo darbai
+  slug: murijimo-darbai
   approved: true
 s0210:
   title: Naujo namo statyba
@@ -128,7 +127,7 @@ s0300:
   approved: true
 s0310:
   title: Tvorų įrengimas
-  slug: tvoru-irengimas
+  slug: tvoros
   approved: true
 s0320:
   title: Virtuvės įrengimas
@@ -141,9 +140,5 @@ s0330:
 s0340:
   title: Žemės paruošimas statyboms
   slug: zemes-paruosimas-statyboms
-  approved: true
-s0350:
-  title: Įrankiai
-  slug: irankiai
   approved: true
 

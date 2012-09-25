@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>Specialisto registracija</h1>
+  <div class="row">
+    <div class="span7">
+      <%= form_for @specialist, html: {class: "form-horizontal well"}, url: create_specialist_path do |f| %>
+
+          <legend>Atliekami darbai</legend>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Pagrindinė paslauga</label>
+            <div class="controls">
+              <%= f.select :service_type_id, options_for_select(service_types()) %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Kitos paslaugos</label>
+            <div class="controls">
+              <%= select_tag 'extra_services', options_for_select(service_types()), { multiple: true, size: 10} %>
+            </div>
+          </div>
+
+          <legend>Prisistatymas</legend>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Vardas / pavadinimas</label>
+            <div class="controls">
+              <%= f.text_field :title %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Prisistatymas</label>
+            <div class="controls">
+              <%= f.text_area :about, rows: "5" %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Kontaktinis telefono numeris</label>
+            <div class="controls">
+              <%= f.text_field :phone %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">Interneto svetainė</label>
+            <div class="controls">
+              <%= f.text_field :website %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="todo">El. pašto adresas</label>
+            <div class="controls">
+              <%= f.text_field :email %>
+            </div>
+          </div>
+
+          <%= submit_tag "Registruotis" %>
+      <% end %>
+    </div>
+    <div class="span5">
+      trototo
+    </div>
+
+  </div>
+</div>
+

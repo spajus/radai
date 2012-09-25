@@ -1,6 +1,9 @@
 Radai::Application.routes.draw do
 
-  match "registracija" => "signup_wizard#begin", as: "begin_signup"
+  resources :specialist, path: "specialistas"
+  # Need to remap the following route due to this bug:
+  # https://github.com/rails/rails/issues/1769
+  post "specialistas" => "specialist#create", as: "create_specialist"
 
   root to: "home#index"
 
