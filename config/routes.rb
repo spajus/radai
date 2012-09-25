@@ -1,5 +1,7 @@
 Radai::Application.routes.draw do
 
+  match "registracija" => "signup_wizard#begin", as: "begin_signup"
+
   root to: "home#index"
 
   # The priority is based upon order of creation:

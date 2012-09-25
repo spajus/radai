@@ -1,0 +1,149 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+s0010:
+  title: Akmenskaldystė
+  slug: akmenskaldystė
+  approved: true
+
+s0020:
+  title: Apsaugos sistemų įrengimas
+  slug: apsaugos-sistemos
+  approved: true
+s0030:
+  title: Apšiltinimas
+  slug: apsiltinimas
+  approved: true
+
+s0040:
+  title: Architektūra ir dizainas
+  slug: architektura-dizainas
+  approved: true
+
+s0050:
+  title: Dažymas ir apdaila
+  slug: dazymas-apdaila
+  approved: true
+
+s0060:
+  title: Dažymas ir apdaila
+  slug: dazymas-apdaila
+  approved: true
+
+s0070:
+  title: Drėgmės šalinimas
+  slug: dregmes-salinimas
+  approved: true
+
+s0080:
+  title: Dujų inžinerija
+  slug: duju-inzinerija
+  approved: true
+s0090:
+  title: Elektra
+  slug: elektra
+  approved: true
+s0100:
+  title: Garažo ar daržinės įrengimas
+  slug: garazas-darzine
+  approved: true
+s0110:
+  title: Gatvių ir šaligatvių įrengimas
+  slug: gatves-saligatviai
+  approved: true
+s0120:
+  title: Grindų įrengimas
+  slug: grindu-irengimas
+  approved: true
+s0130:
+  title: Griovimas
+  slug: griovimas
+  approved: true
+s0140:
+  title: Izoliacijos įrengimas
+  slug: izoliacijos-irengimas
+  approved: true
+s0150:
+  title: Kaminai ir židiniai
+  slug: kaminai-zidiniai
+  approved: true
+s0160:
+  title: Kilimai ir parketas
+  slug: kilimai-parketas
+  approved: true
+s0170:
+  title: Kraštovaizdžio sodininkystė
+  slug: krastovaizdzio-sodininkyste
+  approved: true
+s0180:
+  title: Langų įrengimas
+  slug: langu-irengimas
+  approved: true
+s0190:
+  title: Loftų perdarymas
+  slug: loftu-perdarymas
+  approved: true
+s0200:
+  title: Mūrijimas
+  slug: murijimas
+  approved: true
+s0210:
+  title: Naujo namo statyba
+  slug: naujo-namo-statyba
+  approved: true
+s0220:
+  title: Plytelių klojimas
+  slug: plyteliu-klojimas
+  approved: true
+s0230:
+  title: Pastato plėtinių statymas
+  slug: pletiniu-statymas
+  approved: true
+s0240:
+  title: Renovacija
+  slug: renovacija
+  approved: true
+s0250:
+  title: Restauravimas
+  slug: restauravimas
+  approved: true
+s0260:
+  title: Santechnika
+  slug: santechnika
+  approved: true
+s0270:
+  title: Staliaus ar dailidės darbai
+  slug: stalius-dailide
+  approved: true
+s0280:
+  title: Stogų dengimas
+  slug: stogu-dengimas
+  approved: true
+s0290:
+  title: Tinkavimas
+  slug: tinkavimas
+  approved: true
+s0300:
+  title: Trinkelių klojimas
+  slug: trinkeliu-klojimas
+  approved: true
+s0310:
+  title: Tvorų įrengimas
+  slug: tvoru-irengimas
+  approved: true
+s0320:
+  title: Virtuvės įrengimas
+  slug: virtuves-irengimas
+  approved: true
+s0330:
+  title: Vonios įrengimas
+  slug: vonios-irengimas
+  approved: true
+s0340:
+  title: Žemės paruošimas statyboms
+  slug: zemes-paruosimas-statyboms
+  approved: true
+s0350:
+  title: Įrankiai
+  slug: irankiai
+  approved: true
+

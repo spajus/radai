@@ -2,7 +2,9 @@
   <div class="container">
       <h1>Patikimi statybininkai be tarpininkų</h1>
       <p class="magic-well">
-        <a class="btn btn-success btn-hero"><i class="icon-plus"></i> Registruok savo paslaugas</a>
+        <%= link_to begin_signup_path, class: "btn btn-success btn-hero" do %>
+            <i class="icon-plus"></i> Registruok savo paslaugas
+        <% end %>
         <a class="btn btn-primary btn-hero"><i class="icon-search"></i> Rask darbininką</a>
       </p>
   </div>
