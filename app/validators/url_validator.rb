@@ -3,12 +3,6 @@
 # = Usage
 #  validates :attribute, :url => true
 
-# Allow nil values
-# validates :attribute, :allow_nil => true
-
-# Allow empty values
-# validates :attribute, :allow_empty => true
-
 # Pass in a domain to validate a url belongs to a domain (including any sub-domains and pages beneath the domain and sub-domains)
 # validates :attribute, :url => {:domain => 'facebook.com'}
 
@@ -19,13 +13,10 @@ class UrlValidator < ActiveModel::EachValidator
     @domain = options[:domain]
     @permissible_schemes = options[:schemes] || %w(http https)
     @error_message = options[:message] || I18n.translate("activerecord.errors.url.invalid")
-    @allow_nil = options[:allow_nil]
-    @allow_empty = options[:allow_empty]
   end
 
   def validate_each(record, attribute, value)
-    return if @allow_nil && value.nil?
-    return if @allow_empty && value.empty?
+    return if value.empty?
 
     if URI::regexp(@permissible_schemes).match(value)
       begin

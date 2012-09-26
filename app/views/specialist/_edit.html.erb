@@ -1,0 +1,61 @@
+<legend>Atliekami darbai</legend>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Pagrindinė paslauga</label>
+  <div class="controls">
+    <%= f.select :service_type_select, service_types(), { include_blank: "-- Pasirinkite --" } %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Kitos paslaugos</label>
+  <div class="controls">
+    <% if @specialist.extra_services.empty? %>
+        <a id="show-checkboxes" class="btn" href="#">Pridėti daugiau paslaugų</a>
+    <% end %>
+    <div id="checkboxes" <% if @specialist.extra_services.empty? %>class="hide"<% end %>>
+
+      <% ServiceType.order("title").all.each do |s_type| %>
+          <label class="checkbox"><%= s_type.title %>
+            <%= check_box_tag "specialist[extra_services_select][]", s_type.id,
+                              @specialist.extra_services.collect{ |s| s.id }
+                              .include?(s_type.id) %>
+          </label>
+      <% end %>
+    </div>
+    <%#<%= f.collection_select :extra_services_select, ServiceType.all, :id, :title, {}, multiple: true, size: 10 %>
+  </div>
+</div>
+
+<legend>Prisistatymas</legend>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Vardas / pavadinimas</label>
+  <div class="controls">
+    <%= f.text_field :title %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Prisistatymas</label>
+  <div class="controls">
+    <%= f.text_area :about, rows: "5" %>
+  </div>
+</div>
+
+<legend>Kontaktiniai duomenys</legend>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Kontaktinis telefono numeris</label>
+  <div class="controls">
+    <%= f.phone_field :phone %>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="todo">Interneto svetainė</label>
+  <div class="controls">
+    <%= f.text_field :website %>
+  </div>
+</div>
+

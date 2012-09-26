@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Prisijungimo nustatymai</h2>
+    </div>
+    <div class="span6">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal well" }) do |f| %>
+
+        <% if devise_error_messages! %>
+          <div class="alert alert-error">
+            <%= devise_error_messages! %>
+          </div>
+        <% end %>
+
+        <div class="control-group">
+          <%= f.label :email, class: "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password, class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password, autocomplete: "off" %>
+            <span class="help-inline">jei nekeisite, palikite tuščią</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :password_confirmation, class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= f.label :current_password, class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :current_password %>
+            <span class="help-inline">reikalingas patvirtinant pakeitimus</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit "Išsaugoti", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
+
+    </div>
+    <div class="span6">
+      <div class="well">
+        <h3>Paskyros uždarymas</h3>
+        <p>Nepatiko? Galite <%= link_to "ištrinti savo paskyrą", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+

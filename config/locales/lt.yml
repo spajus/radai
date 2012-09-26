@@ -10,10 +10,19 @@ lt:
         invalid: neatitinka formato (http://...)
 
       models:
-        specialist:
+        user:
           attributes:
             email:
               blank: turi būti užpildytas
+              taken: jau užregistruotas. Jei pamiršote slaptažodį, galite jį atstatyti.
+            password:
+              blank: turi būti užpildytas
+            current_password:
+              blank: turi būti užpildytas
+
+
+        specialist:
+          attributes:
             phone:
               not_a_number: turi būti sudarytas tik iš skaičių
               too_short: turi turėti 11 skaitmenų, pvz. 37011122222
@@ -21,14 +30,24 @@ lt:
             title:
               too_short: per trumpas
               too_long: per ilgas
+              blank: turi būti užpildytas
+            service_type:
+              blank: turi būti nurodyta
 
     models:
       specialist: Specialistas
+      user: Vartotojas
 
     attributes:
       specialist:
-        email: El. paštas
         phone: Kontaktinis telefonas
         website: Interneto svetainė
         title: Vardas / pavadinimas
+        service_type: Pagrindinė paslauga
+      user:
+        email: El. paštas
+        password: Slaptažodis
+        remember_me: Prisiminti
+        password_confirmation: Pakartokite slaptažodį
+        current_password: Dabartinis slaptažodis
 

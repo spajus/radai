@@ -1,24 +1,30 @@
 class Specialist < ActiveRecord::Base
-  attr_accessible :service_type,
+
+  attr_accessible :user,
+                  :service_type,
+                  :service_type_id,
                   :service_type_select,
                   :extra_services,
                   :extra_services_select,
+                  :specialist_services,
                   :about,
                   :email,
                   :phone,
                   :title,
                   :website
 
-  has_one :service_type
+  belongs_to :user
 
+  belongs_to :service_type
+
+  has_many :specialist_services
   has_many :extra_services,
            through: :specialist_services,
-           class_name: "ServiceType"
+           class_name: "ServiceType",
+           source: :service_type
 
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            email: true
+  validates :service_type,
+            presence: true
 
   validates :phone,
             numericality: true,
@@ -29,10 +35,12 @@ class Specialist < ActiveRecord::Base
 
   validates :title,
             presence: true,
-            length: {minimum: 6, maximum: 140}
+            length: {minimum: 2, maximum: 140}
 
   def service_type_select=(id)
-    self.service_type = ServiceType.find(id)
+    unless id.blank?
+      self.service_type = ServiceType.find(id)
+    end
   end
 
   def service_type_select
@@ -40,11 +48,24 @@ class Specialist < ActiveRecord::Base
   end
 
   def extra_services_select=(ids)
-
+    current_ids = []
+    self.extra_services.each do |s|
+      unless ids.include?(s.id)
+        raise "TODO deleting extra service #{s}"
+      else
+        current_ids.append(s.id)
+      end
+    end
+    ids.each do |id|
+      next if id.to_i == self.service_type.id
+      unless current_ids.include?(id)
+        self.extra_services.append(ServiceType.find(id))
+      end
+    end
   end
 
   def extra_services_select
-
+    self.extra_services.collect {|s| [s.title, s.id]}
   end
 
 end

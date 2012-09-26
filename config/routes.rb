@@ -1,10 +1,16 @@
 Radai::Application.routes.draw do
 
+  devise_for :users
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  match "specialistas/registracija" => "specialist#create_complete"
   resources :specialist, path: "specialistas"
   # Need to remap the following route due to this bug:
   # https://github.com/rails/rails/issues/1769
   post "specialistas" => "specialist#create", as: "create_specialist"
-  match "specialistas/registracija" => "specialist#create_complete"
 
   root to: "home#index"
 

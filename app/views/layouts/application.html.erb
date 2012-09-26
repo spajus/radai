@@ -19,7 +19,7 @@
   <![endif]-->
 
   <!-- Le fav and touch icons -->
-  <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  <%=  favicon_link_tag %>
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
@@ -47,11 +47,40 @@
             <% end %>
           </li>
           <li class="">
-            <a href="">Registracija</a>
+            <%= link_to new_specialist_path do %>
+            <i class="icon-plus"></i> Registracija
+            <% end %>
           </li>
           <li class="">
-            <a href="">Darbininkai</a>
+            <a href=""><i class="icon-search"></i>Paieška</a>
           </li>
+        </ul>
+        <ul class="nav pull-right">
+          <li class="divider-vertical"></li>
+          <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <i class="icon-caret-down"></i></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <i class="icon-edit"></i> Prisijungimo nustatymai
+                <% end %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="icon-signout"></i> Atsijungti
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_session_path do %>
+                <i class="icon-signin"></i> Prisijungti
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -59,6 +88,7 @@
 </div>
 
 <div id="content">
+  <%= render partial: "shared/flashes", locals: { flash: flash } %>
   <%= yield %>
 </div>
 
@@ -71,6 +101,7 @@
     </div>
   </div>
 </footer>
+
 
 </body>
 </html>

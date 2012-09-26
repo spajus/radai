@@ -4,62 +4,46 @@
     <div class="span7">
       <%= form_for @specialist, html: {class: "form-horizontal well"}, url: create_specialist_path do |f| %>
 
-          <%= render "shared/form_errors", object: @specialist %>
+          <% if @specialist.errors.any? or @specialist.user.errors.any? %>
+          <div class="alert alert-error">
+            <h3>Ištaisykite šias klaidas:</h3>
 
-          <legend>Atliekami darbai</legend>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">Pagrindinė paslauga</label>
-            <div class="controls">
-              <%= f.collection_select :service_type_select, ServiceType.all, :id, :title, prompt: true %>
-            </div>
+            <ul>
+              <% @specialist.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+              <% @specialist.user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
           </div>
+          <% end %>
+          <%= render partial: "edit", locals: {specialist: @specialist, f: f} %>
 
-          <div class="control-group">
-            <label class="control-label" for="todo">Kitos paslaugos</label>
-            <div class="controls">
-              <%= f.collection_select :extra_services_select, ServiceType.all, :id, :title, {}, multiple: true, size: 10 %>
-            </div>
+
+          <%= fields_for @specialist.user do |user_f| %>
+
+              <legend>Prisijungimas</legend>
+
+              <div class="control-group">
+                <label class="control-label" for="todo">El. paštas</label>
+                <div class="controls">
+                  <%= user_f.text_field :email %>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="todo">Slaptažodis</label>
+                <div class="controls">
+                  <%= user_f.password_field :password %>
+                </div>
+              </div>
+
+          <% end %>
+
+          <div class="form-actions">
+            <%= submit_tag "Registruotis", class: "btn btn-success btn-large" %>
           </div>
-
-          <legend>Prisistatymas</legend>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">Vardas / pavadinimas</label>
-            <div class="controls">
-              <%= f.text_field :title %>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">Prisistatymas</label>
-            <div class="controls">
-              <%= f.text_area :about, rows: "5" %>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">Kontaktinis telefono numeris</label>
-            <div class="controls">
-              <%= f.text_field :phone %>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">Interneto svetainė</label>
-            <div class="controls">
-              <%= f.text_field :website %>
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label class="control-label" for="todo">El. pašto adresas</label>
-            <div class="controls">
-              <%= f.text_field :email %>
-            </div>
-          </div>
-
-          <%= submit_tag "Registruotis" %>
       <% end %>
     </div>
     <div class="span5">
