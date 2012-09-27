@@ -49,18 +49,19 @@
   <label class="control-label" for="todo">Adresas</label>
   <div class="controls">
     <%= f.text_field :full_address,
+                     placeholder: "Pvz.: Pilaitė, Vilnius",
                      'data-search-url' => url_for(:ajax_address_search) %>
   </div>
 </div>
 
 <div id="profile-map" class="control-group <% if @specialist.full_address.blank? %>hide<% end %>">
-  <label class="control-label">Žemėlapis</label>
+  <label class="control-label"></label>
   <div class="controls">
   <%= gmaps(markers: { data: @specialist.to_gmaps4rails },
-            map_options: { detect_location: true,
-                           center_on_user: true,
+            map_options: { detect_location: false,
+                           center_on_user: false,
                            auto_zoom: false,
-                           zoom: 11}) %>
+                           zoom: 10}) %>
   </div>
 </div>
 

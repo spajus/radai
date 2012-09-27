@@ -33,6 +33,8 @@ lt:
               blank: turi būti užpildytas
             service_type:
               blank: turi būti nurodyta
+            full_address:
+              blank: turi būti nurodytas. Tiksliaus adreso rašyti nebūtina. Kuo tiksliau nurodysite adresą, tuo lengviau būsite randamas pagal geografinę paiešką.
 
     models:
       specialist: Specialistas
@@ -44,6 +46,7 @@ lt:
         website: Interneto svetainė
         title: Vardas / pavadinimas
         service_type: Pagrindinė paslauga
+        full_address: Adresas
       user:
         email: El. paštas
         password: Slaptažodis

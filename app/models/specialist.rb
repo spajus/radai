@@ -32,6 +32,9 @@ class Specialist < ActiveRecord::Base
            class_name: "ServiceType",
            source: :service_type
 
+  validates :full_address,
+            presence: true
+
   validates :service_type,
             presence: true
 
