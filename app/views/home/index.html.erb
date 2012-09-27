@@ -4,9 +4,11 @@
       <h1>Patikimi statybininkai be tarpininkų</h1>
       <p class="magic-well">
         <%= link_to new_specialist_path, class: "btn btn-success btn-hero" do %>
-            <i class="icon-plus"></i> Registruok savo paslaugas
+          <i class="icon-plus"></i> Registruok savo paslaugas
         <% end %>
-        <a class="btn btn-primary btn-hero"><i class="icon-search"></i> Rask darbininką</a>
+        <%= link_to search_path, class: "btn btn-primary btn-hero" do %>
+          <i class="icon-search"></i> Rask darbininką
+        <% end %>
       </p>
   </div>
 </div>

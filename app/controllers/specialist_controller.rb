@@ -1,6 +1,10 @@
 # coding: utf-8
 class SpecialistController < ApplicationController
 
+  def menu_item
+    "specialist"
+  end
+
   def index
     redirect_to action: "new"
   end

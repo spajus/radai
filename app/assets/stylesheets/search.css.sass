@@ -1,0 +1,18 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "vars.sass"
+@import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
+
+.search-page
+  .search-result
+    background: $white
+    display: block
+    padding: 10px 20px
+    margin-top: 20px
+    +border-radius(5px)
+    +single-box-shadow
+    .contact-info
+      border-right: 1px dashed $dashedBorder

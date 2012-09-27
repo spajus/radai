@@ -11,30 +11,32 @@
       <% end %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="active">
+          <%= menu_item "home" do%>
             <%= link_to root_path do %>
               <i class="icon-home"></i> Pradžia
             <% end %>
-          </li>
-          <li class="">
-          <% unless current_user %>
-              <%= link_to new_specialist_path do %>
-                <i class="icon-plus"></i> Registracija
-              <% end %>
-          <% else %>
-              <%= link_to edit_specialist_path do %>
-                <i class="icon-user"></i> Specialisto profilis
-              <% end %>
           <% end %>
-          </li>
-          <li class="">
-            <a href=""><i class="icon-search"></i>Paieška</a>
-          </li>
+          <%= menu_item "specialist" do %>
+            <% unless current_user %>
+                <%= link_to new_specialist_path do %>
+                  <i class="icon-plus"></i> Registracija
+                <% end %>
+            <% else %>
+                <%= link_to edit_specialist_path do %>
+                  <i class="icon-user"></i> Specialisto profilis
+                <% end %>
+            <% end %>
+          <% end %>
+          <%= menu_item "search" do %>
+            <%=  link_to search_path do %>
+              <i class="icon-search"></i>Paieška</a>
+            <% end %>
+          <% end %>
         </ul>
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
           <% if current_user %>
-            <li class="dropdown">
+            <%= menu_item "devise::registrations", "dropdown" do %>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <i class="icon-caret-down"></i></a>
               <ul class="dropdown-menu">
                 <li>
@@ -49,13 +51,13 @@
                   <% end %>
                 </li>
               </ul>
-            </li>
+            <% end %>
           <% else %>
-            <li>
+            <%= menu_item "devise::sessions" do %>
               <%= link_to new_user_session_path do %>
                 <i class="icon-signin"></i> Prisijungti
               <% end %>
-            </li>
+            <% end %>
           <% end %>
         </ul>
       </div>

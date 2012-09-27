@@ -1,0 +1,71 @@
+<div class="search-page container">
+  <div class="row">
+    <div class="span5">
+      <%= form_for @specialist, url: search_path, html: {class: "well"} do |f| %>
+
+      <legend>Specialistų paieška</legend>
+
+      <div class="control-group">
+        <label class="control-label" for="todo">Vietovė</label>
+        <div class="controls">
+          <%= f.text_field :full_address,
+                           placeholder: "Pvz.: Pilaitė, Vilnius",
+                           class: "input-block-level",
+                           'data-search-url' => url_for(:ajax_address_search) %>
+        </div>
+      </div>
+
+      <legend>Atliekami darbai</legend>
+
+      <div class="control-group">
+        <div class="controls">
+          <div id="checkboxes">
+            <% ServiceType.order("title").all.each do |s_type| %>
+                <label class="checkbox"><%= s_type.title %>
+                  <%= check_box_tag "specialist[extra_services_select][]", s_type.id,
+                                    @specialist.extra_services.collect{ |s| s.id }
+                                    .include?(s_type.id) %>
+                </label>
+            <% end %>
+          </div>
+          <%#<%= f.collection_select :extra_services_select, ServiceType.all, :id, :title, {}, multiple: true, size: 10 %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="span7">
+      <%= gmaps(markers: { data: @map_markers },
+                map_options: { detect_location: true,
+                               center_on_user: true,
+                               class: "search_map",
+                               auto_zoom: false,
+                               zoom: 10}) %>
+      <% @results.each do |object| %>
+        <div class="search-result">
+          <legend><i class="icon-user"></i> <%= object.title %></legend>
+          <div class="row-fluid">
+            <div class="span7 contact-info">
+              <p>
+                <i class="icon-home"></i> <%= object.full_address %>
+              </p>
+              <p>
+                <i class="icon-phone"></i> +<%= object.phone %>
+              </p>
+              <% unless object.user.nil? %>
+                <p>
+                 <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
+                </p>
+              <% end %>
+              <p>
+                <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
+              </p>
+            </div>
+            <div class="span5 about">
+              <%= object.about %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

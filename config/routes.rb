@@ -1,5 +1,7 @@
 Radai::Application.routes.draw do
 
+  get "paieska" => "search#index", as: "search"
+
   devise_for :users
 
   ActiveAdmin.routes(self)

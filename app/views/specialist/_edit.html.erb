@@ -60,6 +60,7 @@
   <%= gmaps(markers: { data: @specialist.to_gmaps4rails },
             map_options: { detect_location: false,
                            center_on_user: false,
+                           class: "profile_map",
                            auto_zoom: false,
                            zoom: 10}) %>
   </div>
