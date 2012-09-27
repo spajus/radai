@@ -7,7 +7,16 @@
 @import "compass/css3/border-radius"
 
 .search-page
-  .search-result
+  hr
+    margin: 5px 0
+    border-top: 1px solid $dashedBorder !important
+
+  .specialist-card
+    > legend
+      color: $blackcurrant!important
+      font-size: 17px
+      line-height: 28px
+      margin-bottom: 0px
     background: $white
     display: block
     padding: 10px 20px
@@ -15,4 +24,12 @@
     +border-radius(5px)
     +single-box-shadow
     .contact-info
-      border-right: 1px dashed $dashedBorder
+      color: $gray
+      padding: 5px 0
+    .service-list
+      color: $gray
+      padding: 5px 0
+    .about
+      color: $gray
+      padding: 5px 0
+      border-top: 1px dashed $dashedBorder

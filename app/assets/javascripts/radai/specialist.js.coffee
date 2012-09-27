@@ -14,6 +14,7 @@ $ ->
   location_url = address_input.data 'search-url'
   profile_map = $ '#profile-map'
 
+  # update map after input is typed
   update_map = ->
     if address_input.val().length > 0
       $.ajax
@@ -30,7 +31,13 @@ $ ->
     else
       profile_map.slideUp()
 
-
   address_input.keyup (e) ->
     clearTimeout address_timeout
     address_timeout = setTimeout update_map, 1000
+
+  markersArray = []
+  Gmaps.map.callback = ->
+    google.maps.event.addListener Gmaps.map.serviceObject, 'click', (e) ->
+      console.log 'clicked map', e
+
+

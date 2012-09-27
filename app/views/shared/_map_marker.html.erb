@@ -1,0 +1,33 @@
+<div class="map-marker-info">
+  <div><i class="icon-user"></i> <strong><%= object.title %></strong></div>
+  <hr/>
+  <div>
+    <i class="icon-home"></i> <%= object.full_address %>
+  </div>
+  <div>
+    <i class="icon-phone"></i> +<%= object.phone %>
+  </div>
+  <% unless object.user.nil? %>
+  <div>
+    <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
+  </div>
+  <% end %>
+  <div>
+    <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
+  </div>
+  <hr />
+  <div>
+    <i class="icon-star"></i> <%= object.service_type.title %>
+  </div>
+  <% object.extra_services.each do |s| %>
+    <div>
+      <i class="icon-ok"></i> <%= s.title %>
+    </div>
+  <% end %>
+  <% unless object.about.blank? %>
+    <hr />
+    <div>
+      <%= object.about %>
+    </div>
+  <% end %>
+</div>

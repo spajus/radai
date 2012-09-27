@@ -1,0 +1,41 @@
+<div class="specialist-card">
+  <legend><i class="icon-user"></i> <%= object.title %></legend>
+  <div class="row-fluid">
+    <div class="span6 contact-info">
+      <div>
+        <i class="icon-home"></i> <%= object.full_address %>
+        <% unless search_address.blank? %>
+          (<%=  object.distance_from(search_location).round(2) %> km)
+        <% end %>
+      </div>
+      <div>
+        <i class="icon-phone"></i> <%= object.phone %>
+      </div>
+      <% unless object.user.nil? %>
+        <div>
+          <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
+        </div>
+      <% end %>
+      <% unless object.website.blank? %>
+      <div>
+        <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
+      </div>
+      <% end %>
+    </div>
+    <% unless object.about.blank? %>
+      <div class="span6 service-list">
+        <div>
+          <i class="icon-star"></i> <%= object.service_type.title %>
+        </div>
+        <% object.extra_services.each do |s| %>
+          <div>
+            <i class="icon-ok"></i> <%= s.title %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="about">
+    <%= object.about %>
+  </div>
+</div>

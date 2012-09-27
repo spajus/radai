@@ -1,17 +1,18 @@
 <div class="search-page container">
   <div class="row">
     <div class="span5">
-      <%= form_for @specialist, url: search_path, html: {class: "well"} do |f| %>
+      <%= form_for @specialist, method: :get, url: search_path, html: {class: "well"} do |f| %>
 
       <legend>Specialistų paieška</legend>
 
       <div class="control-group">
         <label class="control-label" for="todo">Vietovė</label>
-        <div class="controls">
+        <div class="controls row-fluid">
           <%= f.text_field :full_address,
                            placeholder: "Pvz.: Pilaitė, Vilnius",
-                           class: "input-block-level",
+                           class: "span9",
                            'data-search-url' => url_for(:ajax_address_search) %>
+          <%= f.submit "Ieškoti", class: "span3 pull-right btn btn-success" %>
         </div>
       </div>
 
@@ -31,40 +32,25 @@
           <%#<%= f.collection_select :extra_services_select, ServiceType.all, :id, :title, {}, multiple: true, size: 10 %>
         </div>
       </div>
+
+      <div class="form-actions">
+        <%= f.submit "Ieškoti", class: "btn btn-success" %>
+        <%= link_to "Išvalyti", search_path, class: "btn" %>
+      </div>
       <% end %>
     </div>
     <div class="span7">
       <%= gmaps(markers: { data: @map_markers },
-                map_options: { detect_location: true,
-                               center_on_user: true,
+                map_options: { detect_location: false,
+                               center_on_user: false,
                                class: "search_map",
                                auto_zoom: false,
-                               zoom: 10}) %>
-      <% @results.each do |object| %>
-        <div class="search-result">
-          <legend><i class="icon-user"></i> <%= object.title %></legend>
-          <div class="row-fluid">
-            <div class="span7 contact-info">
-              <p>
-                <i class="icon-home"></i> <%= object.full_address %>
-              </p>
-              <p>
-                <i class="icon-phone"></i> +<%= object.phone %>
-              </p>
-              <% unless object.user.nil? %>
-                <p>
-                 <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
-                </p>
-              <% end %>
-              <p>
-                <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
-              </p>
-            </div>
-            <div class="span5 about">
-              <%= object.about %>
-            </div>
-          </div>
-        </div>
+                               zoom: 7}) %>
+      <% @results.each do |result| %>
+        <%= render :partial => 'shared/specialist_card',
+                   locals: {object: result,
+                   search_address: @specialist.full_address,
+                   search_location: [@specialist.latitude, @specialist.longitude] }%>
       <% end %>
     </div>
   </div>

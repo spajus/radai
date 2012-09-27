@@ -49,6 +49,17 @@ class Specialist < ActiveRecord::Base
             presence: true,
             length: {minimum: 2, maximum: 140}
 
+  def self.search_for(params)
+    if params[:specialist][:extra_services]
+      main_specialists = self.where("service_type_id in (?)", params[:specialist][:extra_services])
+      extra_specialists = ServiceType.find(params[:specialist][:extra_services]).specialists
+      raise [main_specialists, extra_specialists].to_yaml
+    else
+      self.all
+    end
+  end
+
+
   def gmaps
     true
   end
@@ -77,7 +88,9 @@ class Specialist < ActiveRecord::Base
       end
     end
     ids.each do |id|
-      next if id.to_i == self.service_type.id
+      unless self.service_type.nil?
+        next if id.to_i == self.service_type.id
+      end
       unless current_ids.include?(id)
         self.extra_services.append(ServiceType.find(id))
       end
