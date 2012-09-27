@@ -6,8 +6,8 @@ lt:
       already_confirmed: "jau patvirtinta, bandykite prisijungti"
       not_locked: "nėra užrakinta"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "Pakeitimai nebuvo išsaugoti"
+        other: "Pakeitimai nebuvo išsaugoti"
 
   devise:
     failure:
@@ -16,13 +16,13 @@ lt:
         unauthenticated: 'You need to sign in or sign up before continuing.'
         unconfirmed: 'You have to confirm your account before continuing.'
         locked: 'Your account is locked.'
-        invalid: 'Neteisingas el. paštas arba slaptažodis'
+        invalid: 'Neteisingas el. paštas arba slaptažodis.'
         invalid_token: 'Invalid authentication token.'
         timeout: 'Your session expired, please sign in again to continue.'
         inactive: 'Your account was not activated yet.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'Sėkmingai prisijungėte.'
+      signed_out: 'Sėkmingai atsijungėte.'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
@@ -38,8 +38,8 @@ lt:
       signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
       signed_up_but_inactive: 'You have signed up successfully. However, we could not sign you in because your account is not yet activated.'
       signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
-      updated: 'You updated your account successfully.'
-      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      updated: 'Pakeitimai išsaugoti sėkmingai.'
+      update_needs_confirmation: "Pakeitimai išsaugoti sėkmingai, tačiau turime patikrinti jūsų naują el. pašto adresą. Pasitikrinkite paštą ir paspauskite ant patvirtinimo nuorodos, kad užbaigtumėte el. pašto adreso pakeitimo procesą."
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'

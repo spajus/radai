@@ -1,5 +1,6 @@
 <div class="welcome-jumbotron">
   <div class="container">
+      <%= render partial: "shared/flashes", locals: { flash: flash } %>
       <h1>Patikimi statybininkai be tarpininkų</h1>
       <p class="magic-well">
         <%= link_to new_specialist_path, class: "btn btn-success btn-hero" do %>

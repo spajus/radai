@@ -46,11 +46,13 @@
                 <i class="icon-home"></i> Pradžia
             <% end %>
           </li>
+          <% unless current_user %>
           <li class="">
             <%= link_to new_specialist_path do %>
             <i class="icon-plus"></i> Registracija
             <% end %>
           </li>
+          <% end %>
           <li class="">
             <a href=""><i class="icon-search"></i>Paieška</a>
           </li>
@@ -88,7 +90,10 @@
 </div>
 
 <div id="content">
-  <%= render partial: "shared/flashes", locals: { flash: flash } %>
+  <% unless @skip_flashes %>
+    <%= render partial: "shared/flashes", locals: { flash: flash } %>
+  <% end %>
+
   <%= yield %>
 </div>
 
