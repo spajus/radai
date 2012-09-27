@@ -30,9 +30,27 @@ class SpecialistController < ApplicationController
     end
   end
 
-  def create_complete
-    raise current_user.to_yaml
+  def edit
+    @specialist = current_user.specialist
   end
 
+  def create_complete
+    @specialist = current_user.specialist
+  end
+
+  def ajax_address_search
+    address = params[:address]
+    if address.empty?
+      render nothing: true
+    else
+      result = Geocoder::search(address)
+      if result.nil?
+        render nothing: true
+      else
+        render json: result.first.data
+      end
+    end
+
+  end
 
 end

@@ -1,17 +1,26 @@
 class Specialist < ActiveRecord::Base
 
+  acts_as_gmappable
+  geocoded_by :full_address
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :geocode, if: :full_address_changed?  # auto-fetch address
+
   attr_accessible :user,
+                  :user_id,
                   :service_type,
                   :service_type_id,
                   :service_type_select,
                   :extra_services,
                   :extra_services_select,
                   :specialist_services,
+                  :latitude,
+                  :longitude,
                   :about,
                   :email,
                   :phone,
                   :title,
-                  :website
+                  :website,
+                  :full_address
 
   belongs_to :user
 
@@ -36,6 +45,14 @@ class Specialist < ActiveRecord::Base
   validates :title,
             presence: true,
             length: {minimum: 2, maximum: 140}
+
+  def gmaps
+    true
+  end
+
+  def gmap4rails_address
+    self.full_address
+  end
 
   def service_type_select=(id)
     unless id.blank?

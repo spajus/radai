@@ -28,66 +28,7 @@
 </head>
 
 <body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <%= link_to root_path, class: "brand" do %>
-          <%= image_tag 'shared/radai-logo.png', width: 32, height: 32, alt: 'Radai' %> Radai Statybos
-        <% end %>
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="active">
-            <%= link_to root_path do %>
-                <i class="icon-home"></i> Pradžia
-            <% end %>
-          </li>
-          <% unless current_user %>
-          <li class="">
-            <%= link_to new_specialist_path do %>
-            <i class="icon-plus"></i> Registracija
-            <% end %>
-          </li>
-          <% end %>
-          <li class="">
-            <a href=""><i class="icon-search"></i>Paieška</a>
-          </li>
-        </ul>
-        <ul class="nav pull-right">
-          <li class="divider-vertical"></li>
-          <% if current_user %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <i class="icon-caret-down"></i></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to edit_user_registration_path do %>
-                  <i class="icon-edit"></i> Prisijungimo nustatymai
-                <% end %>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="icon-signout"></i> Atsijungti
-                <% end %>
-              </li>
-            </ul>
-          </li>
-          <% else %>
-            <li>
-              <%= link_to new_user_session_path do %>
-                <i class="icon-signin"></i> Prisijungti
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render :partial => 'shared/navbar' %>
 
 <div id="content">
   <% unless @skip_flashes %>
@@ -107,6 +48,7 @@
   </div>
 </footer>
 
+<%= yield :scripts %>
 
 </body>
 </html>

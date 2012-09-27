@@ -46,7 +46,27 @@
 <legend>Kontaktiniai duomenys</legend>
 
 <div class="control-group">
-  <label class="control-label" for="todo">Kontaktinis telefono numeris</label>
+  <label class="control-label" for="todo">Adresas</label>
+  <div class="controls">
+    <%= f.text_field :full_address,
+                     'data-search-url' => url_for(:ajax_address_search) %>
+  </div>
+</div>
+
+<div id="profile-map" class="control-group <% if @specialist.full_address.blank? %>hide<% end %>">
+  <label class="control-label">Žemėlapis</label>
+  <div class="controls">
+  <%= gmaps(markers: { data: @specialist.to_gmaps4rails },
+            map_options: { detect_location: true,
+                           center_on_user: true,
+                           auto_zoom: false,
+                           zoom: 11}) %>
+  </div>
+</div>
+
+
+<div class="control-group">
+  <label class="control-label" for="todo">Telefono numeris</label>
   <div class="controls">
     <%= f.phone_field :phone %>
   </div>
@@ -58,4 +78,6 @@
     <%= f.text_field :website %>
   </div>
 </div>
+
+
 

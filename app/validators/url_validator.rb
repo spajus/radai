@@ -16,7 +16,7 @@ class UrlValidator < ActiveModel::EachValidator
   end
 
   def validate_each(record, attribute, value)
-    return if value.empty?
+    return if value.nil? or value.empty?
 
     if URI::regexp(@permissible_schemes).match(value)
       begin

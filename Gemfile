@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'activeadmin'
 gem 'meta_search'
 gem 'devise'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 
 # Gems used only for assets and not required

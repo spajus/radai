@@ -11,6 +11,9 @@ Radai::Application.routes.draw do
   # Need to remap the following route due to this bug:
   # https://github.com/rails/rails/issues/1769
   post "specialistas" => "specialist#create", as: "create_specialist"
+  get "profilis" => "specialist#edit", as: "edit_specialist"
+
+  put "ajax/address" => "specialist#ajax_address_search", as: "ajax_address_search"
 
   root to: "home#index"
 
