@@ -4,19 +4,22 @@ class SearchController < ApplicationController
     if params[:specialist]
       @specialist = Specialist.new(params[:specialist])
       @specialist.geocode
+      @search_radius = params[:search_radius]
     else
       @specialist = Specialist.new
+      @search_radius = 100
     end
-    if @specialist.full_address.blank?
-      @results = Specialist.all
-    else
-      @results = Specialist.search_for(params)
-    end
+    @results = Specialist.search_for(params, @search_radius)
     @map_markers = @results.to_gmaps4rails do |obj, marker|
-      marker.infowindow render_to_string(partial: "shared/map_marker", locals: {object: obj})
+      marker.infowindow render_to_string(
+                            partial: "shared/map_marker",
+                            locals: {
+                                object: obj,
+                                search_address: @specialist.full_address,
+                                search_location: [@specialist.latitude, @specialist.longitude]
+                            })
       marker.title obj.title
     end
-    @map_markers
   end
 
   def search

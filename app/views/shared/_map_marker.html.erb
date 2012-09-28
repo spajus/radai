@@ -2,10 +2,13 @@
   <div><i class="icon-user"></i> <strong><%= object.title %></strong></div>
   <hr/>
   <div>
-    <i class="icon-home"></i> <%= object.full_address %>
+    <i class="icon-map-marker"></i> <%= object.full_address %>
+    <% unless search_address.blank? %>
+      (<%=  object.distance_from(search_location).round(2) %> km)
+    <% end %>
   </div>
   <div>
-    <i class="icon-phone"></i> +<%= object.phone %>
+    <i class="icon-phone"></i> <%= object.phone %>
   </div>
   <% unless object.user.nil? %>
   <div>
@@ -17,7 +20,7 @@
   </div>
   <hr />
   <div>
-    <i class="icon-star"></i> <%= object.service_type.title %>
+    <i class="icon-star"></i> <%= object.primary_service.title %>
   </div>
   <% object.extra_services.each do |s| %>
     <div>

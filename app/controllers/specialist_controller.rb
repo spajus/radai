@@ -19,6 +19,9 @@ class SpecialistController < ApplicationController
   end
 
   def create
+    unless params[:specialist].has_key?("extra_services_select")
+      params[:specialist][:extra_services_select] = []
+    end
     @specialist = Specialist.new(params[:specialist])
     @specialist.user = User.new(params[:user])
 
@@ -39,6 +42,9 @@ class SpecialistController < ApplicationController
   end
 
   def update
+    unless params[:specialist].has_key?("extra_services_select")
+      params[:specialist][:extra_services_select] = []
+    end
     @specialist = current_user.specialist
     if @specialist.update_attributes params[:specialist]
       flash[:notice] = "Pakeitimai sėkmingai išsaugoti."

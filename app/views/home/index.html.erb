@@ -3,31 +3,37 @@
       <%= render partial: "shared/flashes", locals: { flash: flash } %>
       <h1>Patikimi statybininkai be tarpininkų</h1>
       <p class="magic-well">
-        <%= link_to new_specialist_path, class: "btn btn-success btn-hero" do %>
-          <i class="icon-plus"></i> Registruok savo paslaugas
+        <% if current_user %>
+          <%= link_to edit_specialist_path, class: "btn btn-success btn-hero" do %>
+            <i class="icon-edit"></i> Redaguok savo profilį
+          <% end %>
+        <% else %>
+          <%= link_to new_specialist_path, class: "btn btn-success btn-hero" do %>
+            <i class="icon-plus"></i> Registruok savo paslaugas
+          <% end %>
         <% end %>
         <%= link_to search_path, class: "btn btn-primary btn-hero" do %>
-          <i class="icon-search"></i> Rask darbininką
+          <i class="icon-search"></i> Rask specialistą
         <% end %>
       </p>
   </div>
 </div>
 <div class="container">
 <div class="row">
-    <div class="span4">
-      <h2><i class="icon-wrench"></i> &nbsp;Skirta statyboms</h2>
-      <p> Sistema skirta rasti ir išsirinkti tinkamos specializacijos darbininkus reikalingose apylinkėse. Tai itin patogu, jei statote namą, remontuojate stogą ar įsirenginėjate butą.</p>
-    </div>
   <div class="span4">
-    <h2><i class="icon-star"></i> &nbsp;Paremta reputacija</h2>
-    <p>
-      Ši sistema skirta tik sažiningiems darbininkams ir užsakovams. Čia netoleruojamas sukčiavimas.
-    </p>
+    <h2><i class="icon-wrench"></i> &nbsp;Skirta statyboms</h2>
+    <p> Sistema skirta rasti ir išsirinkti tinkamos specializacijos darbininkus reikalingose apylinkėse. Tai itin patogu, jei statote namą, remontuojate stogą ar įsirenginėjate butą.</p>
   </div>
   <div class="span4">
     <h2><i class="icon-phone"></i> &nbsp;Tarkitės tiesiogiai</h2>
     <p>
-      Raskite darbininkus, o ne tarpininkus. Nemokėkite už darbus nežinodami, kas juos atliks.
+      Raskite specialistus, o ne tarpininkus. Nemokėkite už darbus nežinodami, kas juos atliks.
+    </p>
+  </div>
+  <div class="span4">
+    <h2><i class="icon-map-marker"></i> &nbsp;Ieškokite žemėlapyje</h2>
+    <p>
+      Naudokite gyvą žemėlapį ir išsirinkite specialistus, esančius arčiausiai Jūsų.
     </p>
   </div>
 </div>

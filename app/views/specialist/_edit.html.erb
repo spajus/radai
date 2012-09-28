@@ -10,16 +10,15 @@
 <div class="control-group">
   <label class="control-label" for="todo">Kitos paslaugos</label>
   <div class="controls">
-    <% if @specialist.extra_services.empty? %>
+    <% unless @specialist.has_extra_services? %>
         <a id="show-checkboxes" class="btn" href="#">Pridėti daugiau paslaugų</a>
     <% end %>
-    <div id="checkboxes" <% if @specialist.extra_services.empty? %>class="hide"<% end %>>
+    <div id="checkboxes" <% unless @specialist.has_extra_services? %>class="hide"<% end %>>
 
       <% ServiceType.order("title").all.each do |s_type| %>
           <label class="checkbox"><%= s_type.title %>
             <%= check_box_tag "specialist[extra_services_select][]", s_type.id,
-                              @specialist.extra_services.collect{ |s| s.id }
-                              .include?(s_type.id) %>
+                              @specialist.extra_services_include?(s_type.id) %>
           </label>
       <% end %>
     </div>
