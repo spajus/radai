@@ -7,17 +7,23 @@
       (<%=  object.distance_from(search_location).round(2) %> km)
     <% end %>
   </div>
-  <div>
-    <i class="icon-phone"></i> <%= object.phone %>
-  </div>
-  <% unless object.user.nil? %>
-  <div>
-    <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
-  </div>
+  <% if object.show_phone %>
+    <div>
+      <i class="icon-phone"></i> <%= object.phone %>
+    </div>
   <% end %>
-  <div>
-    <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
-  </div>
+  <% unless object.user.nil? %>
+    <% if object.show_email %>
+      <div>
+        <i class="icon-envelope"></i> <%= link_to object.user.email, "mailto:#{object.user.email}" %>
+      </div>
+    <% end %>
+  <% end %>
+  <% unless object.website.blank? %>
+    <div>
+      <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
+    </div>
+  <% end %>
   <hr />
   <div>
     <i class="icon-star"></i> <%= object.primary_service.title %>

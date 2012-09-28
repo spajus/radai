@@ -15,7 +15,11 @@ class SpecialistController < ApplicationController
   end
 
   def new
-    @specialist = Specialist.new(user: User.new)
+    @specialist = Specialist.new(
+        user: User.new,
+        show_phone: true,
+        show_email: true
+    )
   end
 
   def create

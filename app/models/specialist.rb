@@ -1,3 +1,4 @@
+# coding: utf-8
 class Specialist < ActiveRecord::Base
 
   acts_as_gmappable
@@ -18,7 +19,9 @@ class Specialist < ActiveRecord::Base
                   :phone,
                   :title,
                   :website,
-                  :full_address
+                  :full_address,
+                  :show_email,
+                  :show_phone
 
   belongs_to :user
 
@@ -27,6 +30,8 @@ class Specialist < ActiveRecord::Base
   has_many :specialist_services
   has_many :service_types,
            through: :specialist_services
+
+  validate :contact_privacy, :service_limit
 
   validates :full_address,
             presence: true
@@ -44,6 +49,18 @@ class Specialist < ActiveRecord::Base
   validates :title,
             presence: true,
             length: {minimum: 2, maximum: 140}
+
+  def contact_privacy
+    unless (self.show_phone or self.show_email)
+      errors.add("Privatumo nustatymai", "neleis su jumis susisiekti, turite leisti rodyti arba el. paštą, arba telefoną, arba abu.")
+    end
+  end
+
+  def service_limit
+    if self.extra_services.length > 5
+      errors.add("Papildomos paslaugos", "gali būti ne daugiau kaip 5.")
+    end
+  end
 
   def self.search_for(params, search_radius)
     example = Specialist.new(params[:specialist])

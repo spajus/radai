@@ -16,6 +16,11 @@
               <i class="icon-home"></i> Pradžia
             <% end %>
           <% end %>
+          <%= menu_item "search" do %>
+            <%=  link_to search_path do %>
+              <i class="icon-search"></i>Paieška</a>
+            <% end %>
+          <% end %>
           <%= menu_item "specialist" do %>
             <% unless current_user %>
                 <%= link_to new_specialist_path do %>
@@ -25,11 +30,6 @@
                 <%= link_to edit_specialist_path do %>
                   <i class="icon-user"></i> Specialisto profilis
                 <% end %>
-            <% end %>
-          <% end %>
-          <%= menu_item "search" do %>
-            <%=  link_to search_path do %>
-              <i class="icon-search"></i>Paieška</a>
             <% end %>
           <% end %>
           <%= menu_item "feedback" do %>
