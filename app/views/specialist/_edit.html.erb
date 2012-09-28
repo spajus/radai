@@ -31,14 +31,14 @@
 <div class="control-group">
   <label class="control-label" for="todo">Vardas / pavadinimas</label>
   <div class="controls">
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "input-block-level" %>
   </div>
 </div>
 
 <div class="control-group">
   <label class="control-label" for="todo">Prisistatymas</label>
   <div class="controls">
-    <%= f.text_area :about, rows: "5" %>
+    <%= f.text_area :about, rows: "5", class: "input-block-level" %>
   </div>
 </div>
 
@@ -49,6 +49,7 @@
   <div class="controls">
     <%= f.text_field :full_address,
                      placeholder: "Pvz.: Pilaitė, Vilnius",
+                     class: "input-block-level",
                      'data-search-url' => url_for(:ajax_address_search) %>
   </div>
 </div>
@@ -69,14 +70,14 @@
 <div class="control-group">
   <label class="control-label" for="todo">Telefono numeris</label>
   <div class="controls">
-    <%= f.phone_field :phone %>
+    <%= f.phone_field :phone, maxlength: 11, placeholder: "Pvz: 37011122222" %>
   </div>
 </div>
 
 <div class="control-group">
   <label class="control-label" for="todo">Interneto svetainė</label>
   <div class="controls">
-    <%= f.text_field :website %>
+    <%= f.text_field :website, class: "input-block-level" %>
   </div>
 </div>
 

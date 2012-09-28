@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_tag feedback_leave_post_path, method: "post", class: "form-horizontal well" do %>
+      <legend>Naujas Atsiliepimas</legend>
+
+        <div class="control-group">
+          <label class="control-label">Jūs esate</label>
+          <div class="controls">
+            <select name="user_type">
+              <options>
+                <option value="lazy">-- Pasirinkite --</option>
+                <option value="specialist">Specialistas</option>
+                <option value="seeker">Ieškantis specialisto</option>
+                <option value="other">Kitkas</option>
+              </options>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Atsiliepimo tipas</label>
+          <div class="controls">
+            <select name="feedback_type">
+              <options>
+                <option value="lazy">-- Pasirinkite --</option>
+                <option value="suggestion">Patarimas</option>
+                <option value="missing-category">Trūksta kategorijos</option>
+                <option value="complaint-system">Nusiskundimas sistema</option>
+                <option value="complaint-specialist">Nusiskundimas specialistu</option>
+                <option value="offer">Pasiūlymas</option>
+                <option value="spam">Reklama</option>
+              </options>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Jūsų vardas</label>
+          <div class="controls">
+            <%= text_field_tag "name", nil, class: "input-block-level" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">El. paštas</label>
+          <div class="controls">
+            <%= email_field_tag "email", nil, class: "input-block-level" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Atsiliepimas</label>
+          <div class="controls">
+            <%= text_area_tag "feedback", nil,
+                              class: "input-block-level",
+                              rows: 5 %>
+
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <%= submit_tag "Siųsti atsiliepimą", class: "btn btn-success btn-large" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

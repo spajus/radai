@@ -1,5 +1,10 @@
 Radai::Application.routes.draw do
 
+  get "taisykles" => "static#eula", as: "eula"
+  get "privatumas" => "static#privacy", as: "privacy"
+  get "atsiliepimai" => "feedback#leave", as: "feedback_leave"
+  post "atsiliepimai" => "feedback#leave_submit", as: "feedback_leave_post"
+
   get "paieska" => "search#index", as: "search"
 
   devise_for :users

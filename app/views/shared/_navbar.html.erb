@@ -32,6 +32,11 @@
               <i class="icon-search"></i>Paieška</a>
             <% end %>
           <% end %>
+          <%= menu_item "feedback" do %>
+            <%=  link_to feedback_leave_path do %>
+              <i class="icon-bullhorn"></i>Palikti atsiliepimą</a>
+            <% end %>
+          <% end %>
         </ul>
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
