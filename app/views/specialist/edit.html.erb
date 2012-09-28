@@ -1,7 +1,6 @@
 <div class="container">
-  <h1>Specialisto profilis</h1>
   <div class="row">
-    <div class="span7">
+    <div class="span8 offset2">
       <%= form_for @specialist, html: {class: "form-horizontal well"}, url: edit_specialist_path do |f| %>
         <%= render "shared/form_errors", object: @specialist, f: f %>
         <%= render partial: "edit", locals: {specialist: @specialist, f: f} %>
@@ -10,9 +9,6 @@
           <%= submit_tag "Išsaugoti", class: "btn btn-success btn-large" %>
         </div>
       <% end %>
-    </div>
-    <div class="span5">
-      trototo
     </div>
 
   </div>
