@@ -17,6 +17,8 @@ lt:
               taken: jau užregistruotas. Jei pamiršote slaptažodį, galite jį atstatyti.
             password:
               blank: turi būti užpildytas
+              confirmation: nesutampa su pakartotu
+              too_short: per trumpas
             current_password:
               blank: turi būti užpildytas
 

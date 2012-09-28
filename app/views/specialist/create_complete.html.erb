@@ -1,13 +1,12 @@
 <div class="container">
-  <h1>Specialisto registracija</h1>
     <div class="well">
-      <h3>Registracija sėkminga</h3>
+      <legend>Registracija sėkminga</legend>
       <p>
-        Pasitikrinkite el. paštą (<%= @specialist.user.email %>), ten rasite instrukcijas,
-        kaip patvirtinti jūsų registraciją. Tą galite padaryti per 2 dienas.
+        Kelių minučių bėgyje adresu <code><%= @specialist.user.email %></code> gausite instrukcijas,
+        kaip patvirtinti paskyros registraciją. Tą galite padaryti per 2 dienas.
       </p>
       <p>
-        O dabar galite pradėti naudotis sistema.
+        Jau dabar galite save surasti <%= link_to "paieškoje", search_path %>. Sėkmės!
       </p>
     </div>
 </div>

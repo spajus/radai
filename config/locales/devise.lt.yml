@@ -3,7 +3,7 @@ lt:
     messages:
       expired: "nebegalioja, mėginkite iš naujo"
       not_found: "nerastas"
-      already_confirmed: "jau patvirtinta, bandykite prisijungti"
+      already_confirmed: "jau patvirtintas, bandykite prisijungti"
       not_locked: "nėra užrakinta"
       not_saved:
         one: "Pakeitimai nebuvo išsaugoti"
@@ -24,15 +24,15 @@ lt:
       signed_in: 'Sėkmingai prisijungėte.'
       signed_out: 'Sėkmingai atsijungėte.'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      updated_not_active: 'Your password was changed successfully.'
+      send_instructions: 'Kelių minučių bėgyje gausite laišką su instrukcijomis, kaip susikurti naują slaptažodį.'
+      updated: 'Slaptažodis sėkmingai pakeistas.'
+      updated_not_active: 'Slaptažodis sėkmingai pakeistas.'
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send_paranoid_instructions: 'If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      confirmed: 'Jūsų paskyra sėkmingai aktyvuota.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
       signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
@@ -50,9 +50,9 @@ lt:
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Aktyvavimo instrukcijos'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: 'Slaptažodžio keitimas'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: 'Atrakinimo instrukcijos'
 

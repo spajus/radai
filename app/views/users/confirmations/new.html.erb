@@ -1,12 +1,32 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, class: "form-horizontal well" }) do |f| %>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+        <% unless devise_error_messages!.blank? %>
+          <div class="alert alert-error">
+            <%= devise_error_messages! %>
+          </div>
+        <% end %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+        <legend>Paskyros aktyvavimo instrukcijų persiuntimas</legend>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+        <div class="control-group">
+          <%= f.label :email, class: "control-label" %>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
 
-<%= render "devise/shared/links" %>
+        <div class="form-actions">
+          <%= f.submit "Persiųsti aktyvavimo instrukcijas", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="span6">
+      <%= render "users/shared/links" %>
+    </div>
+  </div>
+</div>
+
+

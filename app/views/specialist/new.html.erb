@@ -47,7 +47,15 @@
       <% end %>
     </div>
     <div class="span5">
-      trototo
+      <div class="well">
+
+        <legend>Susiję veiksmai</legend>
+
+          <%= link_to "Specialisto prisijungimas", new_session_path(:user) %><br />
+          <%= link_to "Pamiršote slaptažodį?", new_password_path(:user) %><br />
+          <%= link_to "Negavote el. pašto su paskyros patvirtinimo instrukcijomis?", new_confirmation_path(:user) %><br />
+
+      </div>
     </div>
 
   </div>
