@@ -29,6 +29,9 @@ end
 
 group :production do
   gem 'activerecord-mysql2-adapter'
+  gem 'thin'
+  gem 'execjs'
+  gem 'therubyracer'
 end
 
 gem 'jquery-rails', '~> 2.1'
