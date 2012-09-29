@@ -46,7 +46,7 @@ lt:
       specialist:
         phone: Kontaktinis telefonas
         website: Interneto svetainė
-        title: Vardas / pavadinimas
+        title: Vardas
         service_type: Pagrindinė paslauga
         full_address: Adresas
       user:
