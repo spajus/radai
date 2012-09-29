@@ -4,19 +4,26 @@
 @import "compass/css3/box-shadow"
 
 body
+  background: lighten($grayLighter, 5%) !important
+
+.noise
+  margin-top: -100px
+  padding-top: 100px
   background: url(image-path('shared/bg-noise.png')) repeat
+  padding-bottom: 25px
 
 footer
-  padding: 40px 0
-  margin-top: 80px
+  padding: 20px 0 10px 0
+  color: $grayLight
 
   border-top: 1px solid darken($grayLighter, 20%)
-  border-bottom: 1px solid darken($grayLighter, 30%)
   +text-shadow(rgba($white, .75) 0 1px 1px)
-  +background(linear-gradient($grayLighter, darken($grayLight, 5%) 400px))
+  +single-box-shadow(rgba($gray, .1), 0, -1px, 1px, 0)
 
   .links
+    text-align: right
     a
+      color: $grayLight
       padding: 0 20px 0 0
 
 

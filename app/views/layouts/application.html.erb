@@ -28,32 +28,36 @@
 </head>
 
 <body>
-<%= render :partial => 'shared/navbar' %>
+<div class="noise">
 
-<div id="content">
-  <% unless @skip_flashes %>
-    <%= render partial: "shared/flashes", locals: { flash: flash } %>
-  <% end %>
+  <%= render :partial => 'shared/navbar' %>
 
-  <%= yield %>
+  <div id="content">
+    <% unless @skip_flashes %>
+      <%= render partial: "shared/flashes", locals: { flash: flash } %>
+    <% end %>
+
+    <%= yield %>
+  </div>
+
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="span6">
-        <p>© 2011-2012 Radai. Pagaminta su meile - Lietuvoje.</p>
-      </div>
-      <div class="span6 links">
-        <%= link_to "Naudojimosi taisyklės", eula_path %>
-        <span class="separator"></span>
-        <%= link_to "Privatumo politika", privacy_path %>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <p>© 2011-2012 Radai</p>
+        </div>
+        <div class="span8 links">
+          <%= link_to "Naudojimosi taisyklės", eula_path %>
+          <span class="separator"></span>
+          <%= link_to "Privatumo politika", privacy_path %>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<%= yield :scripts %>
+  <%= yield :scripts %>
 
 </body>
 </html>
