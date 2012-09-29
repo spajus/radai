@@ -29,7 +29,6 @@ end
 
 group :production do
   gem 'mysql2'
-  gem 'activerecord-mysql2-adapter'
   gem 'thin'
   gem 'execjs'
   gem 'therubyracer'
