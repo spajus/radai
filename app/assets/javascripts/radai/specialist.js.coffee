@@ -31,13 +31,8 @@ $ ->
     else
       profile_map.slideUp()
 
-  address_input.keyup (e) ->
-    clearTimeout address_timeout
-    address_timeout = setTimeout update_map, 1000
-
-  markersArray = []
-  Gmaps.map.callback = ->
-    google.maps.event.addListener Gmaps.map.serviceObject, 'click', (e) ->
-      console.log 'clicked map', e
-
+  if profile_map.length
+    address_input.keyup (e) ->
+      clearTimeout address_timeout
+      address_timeout = setTimeout update_map, 1000
 

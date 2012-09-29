@@ -11,7 +11,7 @@ gem 'meta_search'
 gem 'devise'
 gem 'geocoder'
 gem 'gmaps4rails'
-
+gem 'redcarpet'
 
 # Gems used only for assets and not required
 # in production environments by default.

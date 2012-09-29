@@ -1,5 +1,9 @@
 <div class="map-marker-info">
-  <div><i class="icon-user"></i> <strong><%= object.title %></strong></div>
+  <div class="title">
+    <%= link_to "##{object.id}" do %>
+      <i class="icon-user"></i> <strong><%= object.title %></strong>
+    <% end %>
+  </div>
   <hr/>
   <div>
     <i class="icon-map-marker"></i> <%= object.full_address %>
@@ -31,12 +35,6 @@
   <% object.extra_services.each do |s| %>
     <div>
       <i class="icon-ok"></i> <%= s.title %>
-    </div>
-  <% end %>
-  <% unless object.about.blank? %>
-    <hr />
-    <div>
-      <%= object.about %>
     </div>
   <% end %>
 </div>

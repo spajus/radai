@@ -1,4 +1,5 @@
 <div class="specialist-card">
+  <a name="<%= object.id %>"></a>
   <legend><i class="icon-user"></i> <%= object.title %></legend>
   <div class="row-fluid">
     <div class="span6 contact-info">
@@ -39,7 +40,7 @@
   </div>
   <% unless object.about.blank? %>
     <div class="about">
-      <%= object.about %>
+      <%= markdown(object.about) %>
     </div>
   <% end %>
 </div>
