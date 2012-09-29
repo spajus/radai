@@ -40,7 +40,7 @@ lt:
       signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
       updated: 'Pakeitimai išsaugoti sėkmingai.'
       update_needs_confirmation: "Pakeitimai išsaugoti sėkmingai, tačiau turime patikrinti jūsų naują el. pašto adresą. Pasitikrinkite paštą ir paspauskite ant patvirtinimo nuorodos, kad užbaigtumėte el. pašto adreso pakeitimo procesą."
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: 'Sėkmės! Jūsų paskyra buvo panaikinta. Tikimės, jog ateityje mūsų paslaugos Jums patiks labiau, ir prisijungsite iš naujo!'
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account has been unlocked successfully. Please sign in to continue.'
