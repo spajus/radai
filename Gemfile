@@ -27,6 +27,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :production do
+  gem 'activerecord-mysql2-adapter'
+end
+
 gem 'jquery-rails', '~> 2.1'
 
 gem 'capistrano'
