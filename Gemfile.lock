@@ -209,6 +209,7 @@ DEPENDENCIES
   gmaps4rails
   jquery-rails (~> 2.1)
   meta_search
+  mysql2
   rails (= 3.2.8)
   rvm-capistrano
   sass-rails (~> 3.2.3)
