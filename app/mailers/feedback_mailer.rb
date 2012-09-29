@@ -3,6 +3,6 @@ class FeedbackMailer < ActionMailer::Base
 
   def feedback_email(params)
     @params = params
-    mail(from: "info@radai.lt", to: "info@radai.lt", subject: "[Radai Statybos][#{params[:feedback_type]}]")
+    mail(from: "info@radai.lt", to: "tomas.varaneckas+radai@gmail.com", subject: "[Radai Statybos][#{params[:feedback_type]}]")
   end
 end
