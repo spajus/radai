@@ -1,7 +1,7 @@
 <div class="container specialist-page">
-  <h2><%= @specialist.title %></h2>
   <div class="row">
     <div class="span6 specialist-info">
+      <h2><%= @specialist.title %></h2>
       <legend>Kontaktinė informacija</legend>
       <div class="info-block">
         <div>
@@ -47,6 +47,9 @@
       <%= gmaps(markers: { data: @map_markers },
                 map_options: { detect_location: false,
                                center_on_user: false,
+                               language: 'lt',
+                               hl: 'lt',
+                               region: 'lt',
                                class: "specialist_view_map",
                                auto_zoom: false,
                                zoom: 7}) %>
