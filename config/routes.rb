@@ -20,6 +20,7 @@ Radai::Application.routes.draw do
   post "specialistas" => "specialist#create", as: "create_specialist"
   get "profilis" => "specialist#edit", as: "edit_specialist"
   put "profilis" => "specialist#update", as: "update_specialist"
+  get "specialistas/:id" => "specialist#show", as: "specialist_path"
 
   put "ajax/address" => "specialist#ajax_address_search", as: "ajax_address_search"
 

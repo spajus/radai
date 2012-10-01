@@ -1,0 +1,55 @@
+<div class="container specialist-page">
+  <h2><%= @specialist.title %></h2>
+  <div class="row">
+    <div class="span6 specialist-info">
+      <legend>Kontaktinė informacija</legend>
+      <div class="info-block">
+        <div>
+          <i class="icon-map-marker"></i> <%= @specialist.full_address %>
+        </div>
+        <% if @specialist.show_phone %>
+          <div>
+            <i class="icon-phone"></i> <%= @specialist.phone %>
+          </div>
+        <% end %>
+        <% unless @specialist.user.nil? %>
+          <% if @specialist.show_email %>
+            <div>
+              <i class="icon-envelope"></i> <%= link_to @specialist.user.email, "mailto:#{@specialist.user.email}" %>
+            </div>
+          <% end %>
+        <% end %>
+        <% unless @specialist.website.blank? %>
+          <div>
+            <i class="icon-link"></i> <%= link_to @specialist.website.gsub(/^https?:\/\/(www.)?/, ''), @specialist.website %>
+          </div>
+        <% end %>
+      </div>
+      <legend>Atliekami darbai</legend>
+      <div class="info-block">
+        <div>
+          <i class="icon-star"></i> <%= @specialist.primary_service.title %>
+        </div>
+        <% @specialist.extra_services.each do |s| %>
+          <div>
+            <i class="icon-ok"></i> <%= s.title %>
+          </div>
+        <% end %>
+      </div>
+      <% unless @specialist.about.blank? %>
+        <legend>Prisistatymas</legend>
+        <div class="info-block about">
+          <%= markdown(@specialist.about) %>
+        </div>
+      <% end %>
+    </div>
+    <div class="span6">
+      <%= gmaps(markers: { data: @map_markers },
+                map_options: { detect_location: false,
+                               center_on_user: false,
+                               class: "specialist_view_map",
+                               auto_zoom: false,
+                               zoom: 7}) %>
+    </div>
+  </div>
+</div>

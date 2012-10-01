@@ -2,6 +2,7 @@
 @import "compass/css3/text-shadow"
 @import "compass/css3/images"
 @import "compass/css3/box-shadow"
+@import "compass/css3/border-radius"
 
 body
   background: lighten($grayLighter, 5%) !important
@@ -45,4 +46,43 @@ legend
 
 .alert
   text-align: left !important
+
+.map-marker-info
+  .title
+    a
+      color: $blackcurrant !important
+  hr
+    margin: 5px 0
+    border-top: 1px solid $dashedBorder !important
+
+.specialist-card
+  hr
+    margin: 5px 0
+    border-top: 1px solid $dashedBorder !important
+  > legend
+    color: $blackcurrant !important
+    font-size: 17px
+    line-height: 28px
+    margin-bottom: 0px
+    a
+      color: $blackcurrant !important
+  background: $white
+  display: block
+  padding: 10px 20px
+  margin-top: 20px
+  +border-radius(5px)
+  +single-box-shadow
+  .contact-info
+    color: $gray
+    padding: 5px 0
+  .service-list
+    color: $gray
+    padding: 5px 0
+  .about
+    color: $gray
+    padding: 5px 0
+    border-top: 1px dashed $dashedBorder
+    h1, h2, h3, h4, h5, h6
+      font-size: 1em
+      line-height: 20px
 

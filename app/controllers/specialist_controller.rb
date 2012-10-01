@@ -1,17 +1,22 @@
 # coding: utf-8
 class SpecialistController < ApplicationController
 
-  def menu_item
-    "specialist"
-  end
-
   def index
     redirect_to action: "new"
   end
 
-  def show(id)
-    @specialist = Specialist.find(id)
-    render action: "new"
+  def show
+    @menu_item = "search"
+    @specialist = Specialist.find(params[:id])
+    @map_markers = @specialist.to_gmaps4rails do |obj, marker|
+      marker.infowindow render_to_string(
+                            partial: "shared/map_marker",
+                            locals: {
+                                object: obj,
+                                search_address: ''
+                            })
+      marker.title obj.title
+    end
   end
 
   def new

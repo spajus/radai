@@ -1,6 +1,10 @@
 <div class="specialist-card">
   <a name="<%= object.id %>"></a>
-  <legend><i class="icon-user"></i> <%= object.title %></legend>
+  <legend>
+    <%= link_to specialist_path(object.id) do %>
+      <i class="icon-user"></i> <%= object.title %>
+    <% end %>
+  </legend>
   <div class="row-fluid">
     <div class="span6 contact-info">
       <div>
