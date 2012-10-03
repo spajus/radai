@@ -68,19 +68,19 @@ class Specialist < ActiveRecord::Base
     example = Specialist.new(params[:specialist])
     example.geocode
     if example.extra_services.any?
-      results = self.desc.joins(:specialist_services).where("specialist_services.service_type_id in (?)", params[:specialist][:extra_services_select])
+      results = self.desc.page(params[:page]).joins(:specialist_services).where("specialist_services.service_type_id in (?)", params[:specialist][:extra_services_select])
     end
     unless example.full_address.blank?
       if results
         results = results.near(example, search_radius)
       else
-        results = self.desc.near(example, search_radius)
+        results = self.desc.page(params[:page]).near(example, search_radius)
       end
     end
     if results
       return results
     else
-      return self.desc.all
+      return self.desc.page(params[:page])
     end
   end
 

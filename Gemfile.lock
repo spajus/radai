@@ -206,6 +206,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   jquery-rails (~> 2.1)
+  kaminari
   meta_search
   mysql2
   rails (= 3.2.8)
