@@ -5,6 +5,7 @@ lt:
     pagination:
       previous: «
       next: »
+      truncate: …
       first: Pradžia
       last: Pabaiga
   activerecord:
