@@ -1,7 +1,7 @@
 # coding: utf-8
 class Specialist < ActiveRecord::Base
 
-  scope :desc, order("created_at DESC")
+  scope :desc, order("updated_at DESC")
 
   acts_as_gmappable
   geocoded_by :full_address
