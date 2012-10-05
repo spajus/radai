@@ -36,6 +36,11 @@ group :production do
   gem 'therubyracer'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+
 gem 'jquery-rails', '~> 2.1'
 
 gem 'capistrano'
