@@ -17,6 +17,9 @@
 /log/*.log
 /tmp
 
+# RVM rc
+.rvmrc
+
 # RubyMine
 .idea/
 

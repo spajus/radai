@@ -28,9 +28,10 @@
 </head>
 
 <body>
-<div class="noise">
+<div class="index">
 
-  <%= render :partial => 'shared/navbar' %>
+
+  <%#= render :partial => 'shared/navbar' %>
 
   <div id="content">
     <% unless @skip_flashes %>
@@ -46,12 +47,10 @@
     <div class="container">
       <div class="row">
         <div class="span4">
-          <p>© 2011-2012 Radai</p>
+          <p>© 2011-2012 <%= link_to "Radai", root_url(subdomain: false) %></p>
         </div>
         <div class="span8 links">
-          <%= link_to "Naudojimosi taisyklės", eula_path %>
-          <span class="separator"></span>
-          <%= link_to "Privatumo politika", privacy_path %>
+          <%= link_to "Susisiekite", feedback_leave_path %>
         </div>
       </div>
     </div>
@@ -62,7 +61,7 @@
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-27284206-2']);
+    _gaq.push(['_setAccount', 'UA-27284206-1']);
     _gaq.push(['_trackPageview']);
 
     (function() {

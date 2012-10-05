@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      <div class="well">
+        <div class="radai-logo">
+          <%= image_tag 'index/radai-huge.png' %>
+        </div>
+        <div class="about">
+          <p>Mūsų tikslas - skatinti žmonių verslumą, kurti šaunias įvairių veiklos sričių bendruomenes, padėti
+            žmonėms susirasti darbų bei gerų specialistų.</p>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="well">
+        <h1>Projektai</h1>
+        <hr/>
+        <div class="project">
+            <%= link_to root_url(subdomain: "statybos") do %>
+              <h3>
+                <i class="icon-home"></i> Radai Statybos
+              </h3>
+              <div class="preview">
+                <%= image_tag 'index/statybos.jpg' %>
+              </div>
+            <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
