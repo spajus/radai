@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# Sitemap is generated
+/public/sitemap*
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

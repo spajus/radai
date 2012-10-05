@@ -13,6 +13,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'redcarpet'
 gem 'kaminari'
+gem 'sitemap_generator'
 
 # Gems used only for assets and not required
 # in production environments by default.
