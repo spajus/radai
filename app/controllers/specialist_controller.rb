@@ -56,7 +56,7 @@ class SpecialistController < ApplicationController
     end
     @specialist = current_user.specialist
     if @specialist.update_attributes params[:specialist]
-      flash[:notice] = "Pakeitimai sėkmingai išsaugoti."
+      flash[:notice] = t('app.save.success')
     end
     render action: "edit"
   end

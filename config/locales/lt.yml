@@ -16,6 +16,7 @@ lt:
       url:
         invalid: neatitinka formato (http://...)
 
+        no_domain: "does not belong to domain"
       models:
         user:
           attributes:
@@ -63,3 +64,15 @@ lt:
         password_confirmation: Pakartokite slaptažodį
         current_password: Dabartinis slaptažodis
 
+  app:
+    feedback:
+      sent: "Atsiliepimas sėkmingai išsiųstas radai.lt komandai. Ačiū, Jūsų atsiliepimai mums labai svarbūs!"
+    save:
+      success: "Pakeitimai sėkmingai išsaugoti."
+    specialist:
+      privacy_settings: "Privatumo nustatymai"
+      privacy_settings_error: "neleis su jumis susisiekti, turite leisti rodyti arba el. paštą, arba telefoną, arba abu."
+      extra_services: "Papildomos paslaugos"
+      extra_services_size_error: "gali būti ne daugiau kaip 5."
+    subdomain:
+      construction: "statybos"

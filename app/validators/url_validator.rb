@@ -22,7 +22,7 @@ class UrlValidator < ActiveModel::EachValidator
       begin
         uri = URI.parse(value)
         if @domain
-          record.errors.add(attribute, 'does not belong to domain', :value => value) unless uri.host == @domain || uri.host.ends_with?(".#{@domain}")
+          record.errors.add(attribute, t('activerecord.errors.url.no_domain'), :value => value) unless uri.host == @domain || uri.host.ends_with?(".#{@domain}")
         end
       rescue URI::InvalidURIError
         record.errors.add(attribute, @error_message, :value => value)

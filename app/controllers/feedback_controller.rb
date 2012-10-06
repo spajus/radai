@@ -5,7 +5,7 @@ class FeedbackController < ApplicationController
 
   def leave_submit
     FeedbackMailer.feedback_email(params).deliver
-    flash[:notice] = "Atsiliepimas sėkmingai išsiųstas radai.lt komandai. Ačiū, Jūsų atsiliepimai mums labai svarbūs!"
+    flash[:notice] = t('app.feedback.sent')
     render action: "leave"
   end
 end

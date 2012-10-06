@@ -54,13 +54,13 @@ class Specialist < ActiveRecord::Base
 
   def contact_privacy
     unless (self.show_phone or self.show_email)
-      errors.add("Privatumo nustatymai", "neleis su jumis susisiekti, turite leisti rodyti arba el. paštą, arba telefoną, arba abu.")
+      errors.add(t('app.specialist.privacy_settings'), t('app.specialist.privacy_settings_error'))
     end
   end
 
   def service_limit
     if self.extra_services.length > 5
-      errors.add("Papildomos paslaugos", "gali būti ne daugiau kaip 5.")
+      errors.add(t('app.specialist.extra_services'), t('app.specialist.extra_services_size_error'))
     end
   end
 
