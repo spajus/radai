@@ -6,8 +6,7 @@ class Specialist < ActiveRecord::Base
   acts_as_gmappable
   geocoded_by :full_address
   reverse_geocoded_by :latitude, :longitude
-  after_validation :geocode, if: :full_address_changed?  # auto-fetch address
-
+  before_validation :geocode, if: :full_address_changed?  # auto-fetch address
   attr_accessible :user,
                   :user_id,
                   :service_types,
@@ -36,6 +35,9 @@ class Specialist < ActiveRecord::Base
   validate :contact_privacy, :service_limit
 
   validates :full_address,
+            presence: true
+
+  validates :latitude,
             presence: true
 
   validates :specialist_services,
@@ -110,15 +112,23 @@ class Specialist < ActiveRecord::Base
     if results
       return results
     else
-      Rails.cache.fetch([:all_specialists, request.subdomain, params[:page]]) do
+      #Rails.cache.fetch("all_specialists/#{request.subdomain}/#{params[:page]}") do
+        #Rails.logger.debug("Uncached fetch of specialists")
         items = Specialist.desc.page(params[:page]).per(50)
         Kaminari::PaginatableArray.new(
             items.to_a,
             limit: items.limit_value,
             offset: items.offset_value,
             total_count: items.total_count)
-      end
+      #end
     end
+  end
+
+  def self.flush_cache(request)
+    #for page in 0..(self.count / 50)+1
+    #  Rails.logger.debug("Deleting cache page #{page}")
+    #  Rails.cache.delete("all_specialists/#{request.subdomain}/#{page}")
+    #end
   end
 
   def primary_service

@@ -47,6 +47,8 @@ lt:
               blank: turi būti nurodyta
             full_address:
               blank: turi būti nurodytas. Tiksliaus adreso rašyti nebūtina. Kuo tiksliau nurodysite adresą, tuo lengviau būsite randamas pagal geografinę paiešką.
+            latitude:
+              blank: 'nerasta. Nurodykite kuo tikslesnį vietovės adresą, pavyzdžiui "Gatvė, Rajonas, Miestas". Nerašykite "Visa Lietuva" - toks adresas nebus surastas.'
 
     models:
       specialist: Specialistas
@@ -61,6 +63,7 @@ lt:
         full_address: Adresas
         privacy_settings: Privatumo nustatymai
         extra_services: Papildomos paslaugos
+        latitude: Vietovė žemėlapyje
       user:
         email: El. paštas
         password: Slaptažodis

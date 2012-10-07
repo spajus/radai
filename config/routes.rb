@@ -10,10 +10,8 @@ Radai::Application.routes.draw do
   constraints subdomain: /statybos/ do
     get "paieska" => "search#index", as: "search"
     devise_for :users
-    match "specialistas/registracija" => "specialist#create_complete"
-    resources :specialist, path: "specialistas"
-    # Need to remap the following route due to this bug:
-    # https://github.com/rails/rails/issues/1769
+    match "registracija-sekminga" => "specialist#create_complete"
+    get "specialistas/naujas" => "specialist#new", as: "new_specialist"
     post "specialistas" => "specialist#create", as: "create_specialist"
     get "profilis" => "specialist#edit", as: "edit_specialist"
     put "profilis" => "specialist#update", as: "update_specialist"

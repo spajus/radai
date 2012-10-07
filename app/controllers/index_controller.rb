@@ -11,6 +11,7 @@ class IndexController < ApplicationController
 
   def missing
     path = params[:path]
+    Rails.logger.error("Missing path: [#{path}]. [UA: #{request.env["HTTP_USER_AGENT"]}][IP: #{request.remote_ip}]")
     flash[:error] = t('app.route.missing')
     redirect_to action: 'list'
   end

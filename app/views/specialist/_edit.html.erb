@@ -54,7 +54,7 @@
   </div>
 </div>
 
-<div id="profile-map" class="control-group <% if @specialist.full_address.blank? %>hide<% end %>">
+<div id="profile-map" class="control-group <% if @specialist.full_address.blank? or @specialist.latitude.blank? %>hide<% end %>">
   <label class="control-label"></label>
   <div class="controls">
   <%= gmaps(markers: { data: @specialist.to_gmaps4rails },
