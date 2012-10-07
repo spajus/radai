@@ -34,6 +34,7 @@ group :production do
   gem 'thin'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'exception_notification'
 end
 
 group :test, :development do
