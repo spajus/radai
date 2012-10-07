@@ -49,28 +49,35 @@
       <% end %>
     </div>
     <div class="span7">
-      <%= gmaps(markers: {
-                  data: @map_markers,
-                  options: {
-                     randomize: true,
-                     max_random_distance: 200
-                  }
-                },
-                map_options: { detect_location: false,
-                               center_on_user: false,
-                               language: 'lt',
-                               hl: 'lt',
-                               region: 'lt',
-                               class: "search_map",
-                               auto_zoom: false,
-                               zoom: 7}) %>
-      <% @results.each do |result| %>
-        <%= render :partial => 'shared/specialist_card',
-                   locals: {object: result,
-                   search_address: @specialist.full_address,
-                   search_location: [@specialist.latitude, @specialist.longitude] }%>
+      <% if @results.length > 0 %>
+        <%= gmaps(markers: {
+                    data: @map_markers,
+                    options: {
+                       randomize: true,
+                       max_random_distance: 200
+                    }
+                  },
+                  map_options: { detect_location: false,
+                                 center_on_user: false,
+                                 language: 'lt',
+                                 hl: 'lt',
+                                 region: 'lt',
+                                 class: "search_map",
+                                 auto_zoom: false,
+                                 zoom: 7}) %>
+        <% @results.each do |result| %>
+          <%= render :partial => 'shared/specialist_card',
+                     locals: {object: result,
+                     search_address: @specialist.full_address,
+                     search_location: [@specialist.latitude, @specialist.longitude] }%>
+        <% end %>
+        <%= paginate @results %>
+      <% else %>
+        <div class="well">
+          <h3>Deja, nieko neradome</h3>
+          <p>Pamėginkite kitokią užklausą.</p>
+        </div>
       <% end %>
-      <%= paginate @results %>
     </div>
   </div>
 </div>
