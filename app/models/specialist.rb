@@ -52,6 +52,11 @@ class Specialist < ActiveRecord::Base
             presence: true,
             length: {minimum: 2, maximum: 140}
 
+  def phone=(phone)
+    phone = phone.gsub(/[^0-9]/, '') unless phone.nil?
+    super(phone)
+  end
+
   def contact_privacy
     unless (self.show_phone or self.show_email)
       errors.add(t('app.specialist.privacy_settings'), t('app.specialist.privacy_settings_error'))

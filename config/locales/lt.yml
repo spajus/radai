@@ -13,6 +13,8 @@ lt:
     errors:
       email:
         invalid: neatitinka formato
+      primary_service:
+        required: "turi būti pasirinkta"
       url:
         invalid: neatitinka formato (http://...)
 
@@ -55,7 +57,7 @@ lt:
         phone: Kontaktinis telefonas
         website: Interneto svetainė
         title: Vardas
-        service_type: Pagrindinė paslauga
+        primary_service: Pagrindinė paslauga
         full_address: Adresas
       user:
         email: El. paštas
