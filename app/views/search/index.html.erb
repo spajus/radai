@@ -63,8 +63,8 @@
                                  hl: 'lt',
                                  region: 'lt',
                                  class: "search_map",
-                                 auto_zoom: false,
-                                 zoom: 7}) %>
+                                 auto_zoom: true
+                                 }) %>
         <% @results.each do |result| %>
           <%= render :partial => 'shared/specialist_card',
                      locals: {object: result,
