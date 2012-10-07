@@ -66,6 +66,9 @@ Radai::Application.configure do
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true
 
+  # rails will fallback to en, no matter what is set as config.i18n.default_locale
+  config.i18n.fallbacks = [:en]
+
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
