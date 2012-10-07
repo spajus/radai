@@ -51,7 +51,7 @@ Radai::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'stage.statybos.radai.lt' }
+  config.action_mailer.default_url_options = { :host => 'radai.stage' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
       :address              => "localhost",

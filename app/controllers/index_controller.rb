@@ -1,7 +1,12 @@
 class IndexController < ApplicationController
+  respond_to :html, :png
   layout "index"
 
   def list
+    respond_to do |format|
+      format.html
+      format.png { redirect_to view_context.image_path('index/radai.png') }
+    end
   end
 
   def missing
