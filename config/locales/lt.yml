@@ -76,3 +76,5 @@ lt:
       extra_services_size_error: "gali būti ne daugiau kaip 5."
     subdomain:
       construction: "statybos"
+    route:
+      missing: "Jūsų ieškomas puslapis nerastas."

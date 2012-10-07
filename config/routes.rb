@@ -31,4 +31,6 @@ Radai::Application.routes.draw do
     root to: "index#list"
   end
 
+  match '*path' => 'index#missing'
+
 end
