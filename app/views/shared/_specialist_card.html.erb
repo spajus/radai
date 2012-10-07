@@ -1,7 +1,7 @@
 <div class="specialist-card">
   <a name="<%= object.id %>"></a>
   <legend>
-    <%= link_to specialist_path(object.id) do %>
+    <%= link_to specialist_slug_path(object.id, object.title_slug) do %>
       <i class="icon-user"></i> <%= object.title %>
     <% end %>
   </legend>

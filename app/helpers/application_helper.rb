@@ -34,4 +34,9 @@ module ApplicationHelper
     return page_title
   end
 
+  def opengraph(data)
+    out = render(partial: 'shared/opengraph', layout: false, locals: data)
+    content_for(:opengraph, out)
+  end
+
 end

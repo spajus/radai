@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="span8 offset2">
+    <div class="span7">
       <% title "Specialisto profilis" %>
       <%= form_for @specialist, html: {class: "form-horizontal well"}, url: edit_specialist_path do |f| %>
         <%= render "shared/form_errors", object: @specialist, f: f %>
@@ -10,6 +10,14 @@
           <%= submit_tag "Išsaugoti", class: "btn btn-success btn-large" %>
         </div>
       <% end %>
+    </div>
+    <div class="span5">
+      <div class="well">
+        <legend>Susiję veiksmai</legend>
+        <%= link_to specialist_slug_path(@specialist, @specialist.title_slug) do %>
+          <i class="icon-user"></i> Profilio peržiūra
+        <% end %>
+      </div>
     </div>
 
   </div>

@@ -1,0 +1,7 @@
+<meta property="og:title" content="<%= title ||= "Radai" %>" />
+<% unless description.nil? %>
+  <meta property="og:description" content="<%= description %>" />
+<% end %>
+<meta property="og:type" content="<%= type ||= "website" %>"/>
+<meta property="og:url" content="<%= url ||= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" />
+<meta property="og:image" content="<%= image ||= "#{request.protocol}#{request.host_with_port}#{asset_path('shared/radai-og.png')}" %>" />

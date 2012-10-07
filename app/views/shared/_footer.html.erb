@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <p>© 2011 - <%= Time.now.year %> <%= link_to "Radai", root_url(subdomain: false) %></p>
+      </div>
+      <div class="span8 links">
+        <%= link_to "Naudojimosi taisyklės", eula_path %>
+        <span class="separator"></span>
+        <%= link_to "Privatumo politika", privacy_path %>
+        <span class="separator"></span>
+        <%= link_to "Susisiekite", feedback_leave_path %>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -52,6 +52,29 @@ class Specialist < ActiveRecord::Base
             presence: true,
             length: {minimum: 2, maximum: 140}
 
+  def title_slug
+    if title.present?
+      title.downcase.strip.gsub(' ', '-')
+        .gsub(/ą/, 'a')
+        .gsub(/č/, 'c')
+        .gsub(/[ęė]/, 'e')
+        .gsub(/į/, 'i')
+        .gsub(/š/, 's')
+        .gsub(/[ųū]/, 'u')
+        .gsub(/ž/, 'z')
+        .gsub(/[^\w-]/, '')
+    end
+  end
+
+  def og_description
+    og_desc = '' << primary_service.title
+    if extra_services.length > 0
+      og_desc << ', '
+      og_desc << extra_services.collect{ |s| s.title }.join(', ')
+    end
+    og_desc << '.'
+  end
+
   def phone=(phone)
     phone = phone.gsub(/[^0-9]/, '') unless phone.nil?
     super(phone)
