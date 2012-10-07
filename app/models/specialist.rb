@@ -87,7 +87,7 @@ class Specialist < ActiveRecord::Base
     if results
       return results
     else
-      Rails.cache.fetch([:all_specialists, request.subdomain]) do
+      Rails.cache.fetch([:all_specialists, request.subdomain, params[:page]]) do
         items = Specialist.desc.page(params[:page]).per(50)
         Kaminari::PaginatableArray.new(
             items.to_a,
