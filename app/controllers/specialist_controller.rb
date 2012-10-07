@@ -39,6 +39,7 @@ class SpecialistController < ApplicationController
     if specialist_valid and user_valid
       @specialist.save()
       sign_in @specialist.user
+      Rails.cache.delete([:all_specialists, request.subdomain])
       redirect_to action: "create_complete"
     else
       @specialist.user ||= User.new

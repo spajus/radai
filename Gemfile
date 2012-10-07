@@ -14,6 +14,7 @@ gem 'gmaps4rails'
 gem 'redcarpet'
 gem 'kaminari'
 gem 'sitemap_generator'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.

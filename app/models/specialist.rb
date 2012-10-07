@@ -71,7 +71,7 @@ class Specialist < ActiveRecord::Base
     end
   end
 
-  def self.search_for(params, search_radius)
+  def self.search_for(params, search_radius, request)
     example = Specialist.new(params[:specialist])
     example.geocode
     if example.extra_services.any?
@@ -87,7 +87,14 @@ class Specialist < ActiveRecord::Base
     if results
       return results
     else
-      return self.desc.page(params[:page]).per(50)
+      Rails.cache.fetch([:all_specialists, request.subdomain]) do
+        items = Specialist.desc.page(params[:page]).per(50)
+        Kaminari::PaginatableArray.new(
+            items.to_a,
+            limit: items.limit_value,
+            offset: items.offset_value,
+            total_count: items.total_count)
+      end
     end
   end
 
