@@ -37,8 +37,8 @@ lt:
           attributes:
             phone:
               not_a_number: turi būti sudarytas tik iš skaičių
-              too_short: turi turėti 11 skaitmenų, pvz. 37011122222
-              too_long: turi turėti 11 skaitmenų, pvz. 37011122222
+              too_short: turi turėti ne mažiau 8 skaitmenų
+              too_long: per ilgas
             title:
               too_short: per trumpas
               too_long: per ilgas
@@ -59,6 +59,8 @@ lt:
         title: Vardas
         primary_service: Pagrindinė paslauga
         full_address: Adresas
+        privacy_settings: Privatumo nustatymai
+        extra_services: Papildomos paslaugos
       user:
         email: El. paštas
         password: Slaptažodis
@@ -72,9 +74,7 @@ lt:
     save:
       success: "Pakeitimai sėkmingai išsaugoti."
     specialist:
-      privacy_settings: "Privatumo nustatymai"
       privacy_settings_error: "neleis su jumis susisiekti, turite leisti rodyti arba el. paštą, arba telefoną, arba abu."
-      extra_services: "Papildomos paslaugos"
       extra_services_size_error: "gali būti ne daugiau kaip 5."
     subdomain:
       construction: "statybos"

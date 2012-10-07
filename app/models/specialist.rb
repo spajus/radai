@@ -43,7 +43,7 @@ class Specialist < ActiveRecord::Base
 
   validates :phone,
             numericality: true,
-            length: {minimum: 11, maximum: 11}
+            length: {minimum: 8, maximum: 11}
 
   validates :website,
             url: true
@@ -59,13 +59,15 @@ class Specialist < ActiveRecord::Base
 
   def contact_privacy
     unless (self.show_phone or self.show_email)
-      errors.add(t('app.specialist.privacy_settings'), t('app.specialist.privacy_settings_error'))
+      errors.add(:privacy_settings, I18n.translate(
+          'app.specialist.privacy_settings_error'))
     end
   end
 
   def service_limit
     if self.extra_services.length > 5
-      errors.add(t('app.specialist.extra_services'), t('app.specialist.extra_services_size_error'))
+      errors.add(:extra_services, I18n.translate(
+          'app.specialist.extra_services_size_error'))
     end
   end
 
