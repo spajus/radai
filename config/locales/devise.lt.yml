@@ -51,5 +51,5 @@ lt:
       not_found: nerastas
       not_locked: nebuvo užrakintas
       not_saved:
-        one: ! '1 klaida neleido išsaugoti %{resource}:'
-        other: ! '%{count} klaidos(-ų) neleido išsaugoti %{resource}:'
+        one: ! 'Ištaisykite klaidą:'
+        other: ! 'Ištaisykite klaidas:'

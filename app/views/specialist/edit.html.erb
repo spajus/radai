@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="span8 offset2">
+      <% title "Specialisto profilis" %>
       <%= form_for @specialist, html: {class: "form-horizontal well"}, url: edit_specialist_path do |f| %>
         <%= render "shared/form_errors", object: @specialist, f: f %>
         <%= render partial: "edit", locals: {specialist: @specialist, f: f} %>

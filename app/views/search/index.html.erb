@@ -3,7 +3,7 @@
     <div class="span5">
       <%= form_for @specialist, method: :get, url: search_path, html: {class: "well"} do |f| %>
 
-      <legend>Specialistų paieška</legend>
+      <legend><%= title "Specialistų paieška" %></legend>
 
       <div class="control-group">
         <label class="control-label" for="todo">Vietovė</label>
