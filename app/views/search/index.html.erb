@@ -30,11 +30,11 @@
       <div class="control-group">
         <div class="controls">
           <div id="checkboxes">
-            <% ServiceType.order("title").all.each do |s_type| %>
-                <label class="checkbox"><%= s_type.title %>
-                  <%= check_box_tag "specialist[extra_services_select][]", s_type.id,
+            <% ServiceType.find_provided.each do |s_type| %>
+                <label class="checkbox"><%= s_type[:title] %>
+                  <%= check_box_tag "specialist[extra_services_select][]", s_type[:id],
                                     @specialist.extra_services.collect{ |s| s.id }
-                                    .include?(s_type.id) %>
+                                    .include?(s_type[:id]) %>
                 </label>
             <% end %>
           </div>
