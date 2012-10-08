@@ -26,8 +26,6 @@ class Specialist < ActiveRecord::Base
 
   belongs_to :user
 
-  belongs_to :service_type
-
   has_many :specialist_services
   has_many :service_types,
            through: :specialist_services
