@@ -15,6 +15,7 @@ gem 'redcarpet'
 gem 'kaminari'
 gem 'sitemap_generator'
 gem 'dalli'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +42,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rails-footnotes'
 end
 
 gem 'jquery-rails', '~> 2.1'
