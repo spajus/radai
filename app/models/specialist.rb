@@ -54,14 +54,15 @@ class Specialist < ActiveRecord::Base
 
   def title_slug
     if title.present?
-      title.downcase.strip.gsub(' ', '-')
-        .gsub(/ą/, 'a')
-        .gsub(/č/, 'c')
-        .gsub(/[ęė]/, 'e')
-        .gsub(/į/, 'i')
-        .gsub(/š/, 's')
-        .gsub(/[ųū]/, 'u')
-        .gsub(/ž/, 'z')
+      title.downcase.strip
+        .gsub(/\s+/, '-')
+        .gsub(/[Ąą]/, 'a')
+        .gsub(/[Čč]/, 'c')
+        .gsub(/[ĘĖęė]/, 'e')
+        .gsub(/[Įį]/, 'i')
+        .gsub(/[Šš]/, 's')
+        .gsub(/[ŲŪųū]/, 'u')
+        .gsub(/[Žž]/, 'z')
         .gsub(/[^\w-]/, '')
     end
   end
