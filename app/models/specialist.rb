@@ -3,7 +3,7 @@ require 'search_params'
 class Specialist < ActiveRecord::Base
 
   scope :desc, order("updated_at DESC")
-  scope :primary_service_first, order('"specialist_services"."primary" DESC')
+  scope :primary_service_first, order('`specialist_services`.`primary` DESC')
 
   acts_as_gmappable
   geocoded_by :full_address
