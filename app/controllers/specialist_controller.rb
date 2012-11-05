@@ -39,7 +39,6 @@ class SpecialistController < ApplicationController
     if specialist_valid and user_valid
       @specialist.save()
       sign_in @specialist.user
-      Specialist.flush_cache(request)
       redirect_to action: "create_complete"
     else
       @specialist.user ||= User.new
@@ -57,7 +56,6 @@ class SpecialistController < ApplicationController
     end
     @specialist = current_user.specialist
     if @specialist.update_attributes params[:specialist]
-      Specialist.flush_cache(request)
       flash[:notice] = t('app.save.success')
     end
     render action: "edit"

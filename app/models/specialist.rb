@@ -1,12 +1,16 @@
 # coding: utf-8
+require 'search_params'
 class Specialist < ActiveRecord::Base
 
   scope :desc, order("updated_at DESC")
+  scope :primary_service_first, order('"specialist_services"."primary" DESC')
 
   acts_as_gmappable
   geocoded_by :full_address
   reverse_geocoded_by :latitude, :longitude
-  before_validation :geocode, if: :full_address_changed?  # auto-fetch address
+  before_validation :geocode, if: :should_geocode?
+
+
   attr_accessible :user,
                   :user_id,
                   :service_types,
@@ -95,25 +99,25 @@ class Specialist < ActiveRecord::Base
     end
   end
 
-  def self.search_for(params, search_radius, request)
-    example = Specialist.new(params[:specialist])
-    example.geocode
-    if example.extra_services.any?
-      results = self.page(params[:page]).joins(:specialist_services).where("specialist_services.service_type_id in (?)", params[:specialist][:extra_services_select])
+  def self.search_for(search_params)
+    if search_params.example.extra_services.any?
+      results = self.page(search_params.page)
+        .joins(:specialist_services)
+        .where("specialist_services.service_type_id in (?)", 
+               search_params.service_types).primary_service_first
     end
-    unless example.full_address.blank?
+    unless search_params.example.full_address.blank?
       if results
-        results = results.near(example, search_radius).desc
+        results = results.near(search_params.example, search_params.radius).desc
       else
-        results = self.page(params[:page]).near(example, search_radius).desc
+        results = self.page(search_params.page)
+            .near(search_params.example, search_params.radius).desc
       end
     end
     if results
       return results
     else
-      #Rails.cache.fetch("all_specialists/#{request.subdomain}/#{params[:page]}") do
-        #Rails.logger.debug("Uncached fetch of specialists")
-        items = Specialist.desc.page(params[:page]).per(50)
+        items = Specialist.desc.page(search_params.page).per(30)
         Kaminari::PaginatableArray.new(
             items.to_a,
             limit: items.limit_value,
@@ -121,13 +125,6 @@ class Specialist < ActiveRecord::Base
             total_count: items.total_count)
       #end
     end
-  end
-
-  def self.flush_cache(request)
-    #for page in 0..(self.count / 50)+1
-    #  Rails.logger.debug("Deleting cache page #{page}")
-    #  Rails.cache.delete("all_specialists/#{request.subdomain}/#{page}")
-    #end
   end
 
   def primary_service
@@ -206,6 +203,12 @@ class Specialist < ActiveRecord::Base
 
   def extra_services_include?(id)
     self.specialist_services.collect {|s| s.service_type_id unless s.primary }.include?(id)
+  end
+
+  private
+
+  def should_geocode?
+    full_address_changed? #unless Rails.env.test?
   end
 
 end

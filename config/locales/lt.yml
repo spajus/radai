@@ -9,8 +9,9 @@ lt:
       first: Pradžia
       last: Pabaiga
   activerecord:
-
     errors:
+      messages:
+        record_invalid: "neteisingai užpildyti duomenys"
       email:
         invalid: neatitinka formato
       primary_service:

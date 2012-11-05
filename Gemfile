@@ -39,10 +39,23 @@ group :production do
   gem 'exception_notification'
 end
 
+group :development do
+  gem 'guard-rspec'
+  gem 'guard-ctags-bundler'
+  gem 'rb-readline'
+  gem 'rb-fsevent'
+end
+
 group :test, :development do
-  gem 'rspec-rails'
-  gem 'capybara'
   gem 'rails-footnotes'
+  gem 'awesome_print'
+  gem 'pry-nav'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rspec-rails'
 end
 
 gem 'jquery-rails', '~> 2.1'

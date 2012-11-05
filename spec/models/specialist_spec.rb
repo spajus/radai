@@ -18,4 +18,5 @@ describe Specialist do
     specialist.title = "ĄČĘĖĮŠŲŪŽ  ąčęėįšųūž"
     specialist.title_slug.should eq 'aceeisuuz-aceeisuuz'
   end
+
 end

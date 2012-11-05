@@ -1,15 +1,10 @@
 class SearchController < ApplicationController
 
   def index
-    if params[:specialist]
-      @specialist = Specialist.new(params[:specialist])
-      @specialist.geocode
-      @search_radius = params[:search_radius]
-    else
-      @specialist = Specialist.new
-      @search_radius = 100
-    end
-    @results = Specialist.search_for(params, @search_radius, request)
+    search_params = SearchParams.build params
+    @specialist = search_params.example
+    @search_radius = search_params.radius
+    @results = Specialist.search_for(search_params)
     @map_markers = @results.to_gmaps4rails do |obj, marker|
       marker.infowindow render_to_string(
                             partial: "shared/map_marker",
@@ -20,8 +15,5 @@ class SearchController < ApplicationController
                             })
       marker.title obj.title
     end
-  end
-
-  def search
   end
 end
