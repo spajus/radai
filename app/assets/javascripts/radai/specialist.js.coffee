@@ -18,6 +18,14 @@ $ ->
   unless typeof(google) is 'undefined'
     geocoder = new google.maps.Geocoder()
 
+  if profile_map.length
+    # Checkbox limit
+    selector = "input[type=checkbox][name=specialist\\[extra_services_select\\]\\[\\]]" 
+    $(selector).click ->
+      setTimeout ->
+        $(selector).not(":checked").attr "disabled", $("#{selector}:checked").length >= 5
+      , 1
+
   process_results = (results, status) ->
     if status == google.maps.GeocoderStatus.OK
       loc = results[0].geometry.location

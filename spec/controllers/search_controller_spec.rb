@@ -91,6 +91,43 @@ describe SearchController do
       expect(assigns :results).to eq [spec1, spec2, spec3]
 
     end
+
+    it 'should not include duplicated results' do
+      spec1 = FactoryGirl.create :specialist
+      spec2 = FactoryGirl.create :specialist_klaipeda
+      spec3 = FactoryGirl.create :specialist_panevezys
+      spec4 = FactoryGirl.create :specialist_kretinga
+      service1 = ServiceType.find_by_title("Griovimas")
+      service2 = ServiceType.find_by_title("Elektra")
+      service3 = ServiceType.find_by_title("Renovacija")
+
+      spec1.title = "Right One"
+      spec1.service_type_select = service1.id
+      spec1.save
+      spec2.title = "Right Two"
+      spec2.service_type_select = service2.id
+      spec2.extra_services_select = [service1.id]
+      spec2.save
+      spec3.title = "Right Three"
+      spec3.service_type_select = service3.id
+      spec3.extra_services_select = [service1.id, service2.id]
+      spec3.save
+      spec4.title = "Wrong One"
+      spec4.service_type_select = service2.id
+      spec4.save
+
+      get :index, {
+        search_radius: 300,
+        specialist: {
+          full_address: "Klaipeda",
+          latitude: 55.7108026,
+          longitude: 21.1318065,
+          extra_services_select: [service1.id, service2.id, service3.id]
+        }
+      }
+      assigns(:results).length.should eq 4
+
+    end
   end
 end
 

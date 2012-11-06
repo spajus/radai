@@ -103,6 +103,7 @@ class Specialist < ActiveRecord::Base
     if search_params.example.extra_services.any?
       results = self.page(search_params.page)
         .joins(:specialist_services)
+        .group("specialists.id")
         .where("specialist_services.service_type_id in (?)", 
                search_params.service_types).primary_service_first
     end
