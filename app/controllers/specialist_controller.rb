@@ -65,19 +65,4 @@ class SpecialistController < ApplicationController
     @specialist = current_user.specialist
   end
 
-  def ajax_address_search
-    address = params[:address]
-    if address.empty?
-      render nothing: true
-    else
-      result = Geocoder::search(address)
-      if result.nil?
-        render nothing: true
-      else
-        render json: result.first.data
-      end
-    end
-
-  end
-
 end

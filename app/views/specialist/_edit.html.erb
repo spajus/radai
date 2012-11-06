@@ -49,8 +49,9 @@
   <div class="controls">
     <%= f.text_field :full_address,
                      placeholder: "Pvz.: Pilaitė, Vilnius",
-                     class: "input-block-level",
-                     'data-search-url' => url_for(:ajax_address_search) %>
+                     class: "input-block-level" %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
   </div>
 </div>
 

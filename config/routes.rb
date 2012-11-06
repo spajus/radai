@@ -17,7 +17,6 @@ Radai::Application.routes.draw do
     put "profilis" => "specialist#update", as: "update_specialist"
     get "specialistas/:id/:title_slug" => "specialist#show", as: "specialist_slug"
     get "specialistas/:id" => "specialist#show", as: "specialist"
-    put "ajax/address" => "specialist#ajax_address_search", as: "ajax_address_search"
     root to: "home#index"
   end
 

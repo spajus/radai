@@ -11,28 +11,52 @@ $ ->
     ($ '#checkboxes').slideDown()
 
   address_input = $ '#specialist_full_address'
-  location_url = address_input.data 'search-url'
+  latitude_input = $ '#specialist_latitude'
+  longitude_input = $ '#specialist_longitude'
   profile_map = $ '#profile-map'
+  geocoder = null
+  unless typeof(google) is 'undefined'
+    geocoder = new google.maps.Geocoder()
+
+  process_results = (results, status) ->
+    if status == google.maps.GeocoderStatus.OK
+      loc = results[0].geometry.location
+      if profile_map.length
+        profile_map.slideDown()
+        Gmaps.loadMaps()
+        map = Gmaps.map.serviceObject
+        Gmaps.map.clearMarkers()
+        marker = new google.maps.Marker
+          draggable: true,
+          map: map,
+          position: loc
+        google.maps.event.addListener marker, 'dragend', ->
+          loc = this.getPosition()
+          latitude_input.val loc.lat()
+          longitude_input.val loc.lng()
+          
+        map.setCenter loc
+      latitude_input.val loc.lat()
+      longitude_input.val loc.lng()
+      
+    else if status == google.maps.GeocoderStatus.ZERO_RESULTS
+      profile_map.slideUp() if profile_map.length
+    else
+      console.log("Geocode was not successful for the following reason: " + status);
 
   # update map after input is typed
   update_map = ->
+    return if typeof(google) is 'undefined'
     if address_input.val().length > 0
-      $.ajax
-        url: location_url
-        type: 'put'
-        data:
-          address: address_input.val()
-        success: (res) ->
-          profile_map.slideDown()
-          Gmaps.loadMaps()
-          Gmaps.map.replaceMarkers res.geometry.location
-        error: (err) ->
-          console.log 'error', err
+      geocoder ||= new google.maps.Geocoder()
+      geocoder.geocode address: address_input.val(), (results, status) ->
+        process_results results, status
     else
       profile_map.slideUp()
 
-  if profile_map.length
-    address_input.keyup (e) ->
-      clearTimeout address_timeout
-      address_timeout = setTimeout update_map, 1000
+  address_input.keyup (e) ->
+    latitude_input.val ''
+    longitude_input.val ''
+    clearTimeout address_timeout
+    address_timeout = setTimeout update_map, 1000
 
