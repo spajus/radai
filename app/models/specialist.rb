@@ -8,7 +8,7 @@ class Specialist < ActiveRecord::Base
   acts_as_gmappable
   geocoded_by :full_address
   reverse_geocoded_by :latitude, :longitude
-  before_validation :geocode, if: :should_geocode?
+  before_validation :update_geocode
 
 
   attr_accessible :user,
@@ -205,10 +205,14 @@ class Specialist < ActiveRecord::Base
     self.specialist_services.collect {|s| s.service_type_id unless s.primary }.include?(id)
   end
 
-  private
-
-  def should_geocode?
-    full_address_changed? #unless Rails.env.test?
+  def update_geocode
+    unless latitude.present? or latitude_changed?
+      should = full_address_changed? 
+    end
+    if should
+      Rails.logger.warn("Geocoding in backend!: #{self}")
+      geocode
+    end
   end
 
 end

@@ -31,6 +31,8 @@ describe SearchController do
         search_radius: 5,
         specialist: {
           full_address: "Vilnius, Pilaite",
+          latitude: 54.7043478,
+          longitude: 25.1988444,
           extra_services_select: [ServiceType.first.id]
         }
       }
@@ -45,6 +47,8 @@ describe SearchController do
         search_radius: 250,
         specialist: {
           full_address: "Klaipeda",
+          latitude: 55.7108026,
+          longitude: 21.1318065,
           extra_services_select: []
         }
       }
@@ -79,15 +83,14 @@ describe SearchController do
         search_radius: 300,
         specialist: {
           full_address: "Klaipeda",
+          latitude: 55.7108026,
+          longitude: 21.1318065,
           extra_services_select: [service1.id]
         }
       }
       expect(assigns :results).to eq [spec1, spec2, spec3]
 
     end
-
-
   end
-  
 end
 
