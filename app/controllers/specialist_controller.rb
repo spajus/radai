@@ -8,6 +8,10 @@ class SpecialistController < ApplicationController
   def show
     @menu_item = "search"
     @specialist = Specialist.find(params[:id])
+    if params[:title_slug] != @specialist.title_slug
+      redirect_to action: "show", id: @specialist.id, title_slug: @specialist.title_slug
+      return
+    end
     @map_markers = @specialist.to_gmaps4rails do |obj, marker|
       marker.infowindow render_to_string(
                             partial: "shared/map_marker",
