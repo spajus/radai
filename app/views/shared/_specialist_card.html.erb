@@ -1,4 +1,4 @@
-<div class="specialist-card">
+<div class="specialist-card" data-id="<%= object.id %>" data-slug="<%= object.title_slug %>">
   <a name="<%= object.id %>"></a>
   <legend>
     <%= link_to specialist_slug_path(object.id, object.title_slug) do %>
@@ -26,10 +26,20 @@
         <% end %>
       <% end %>
       <% unless object.website.blank? %>
-      <div>
-        <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
-      </div>
+        <div>
+          <i class="icon-link"></i> <%= link_to object.website.gsub(/^https?:\/\/(www.)?/, ''), object.website %>
+        </div>
       <% end %>
+      <span class="like-count">
+        <i class="icon-thumbs-up"></i> <%= link_to specialist_slug_path(object.id, object.title_slug) do %>
+           <span class="likes-<%= object.id %>">0</span>
+        <% end %>
+      </span>
+      <span class="comment-count">
+        <i class="icon-comment"></i> <%= link_to specialist_slug_path(object.id, object.title_slug) do %>
+           <span class="comments-<%= object.id %>">0</span>
+        <% end %>
+      </span>
     </div>
       <div class="span6 service-list">
         <div>

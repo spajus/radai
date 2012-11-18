@@ -68,5 +68,4 @@ class SpecialistController < ApplicationController
   def create_complete
     @specialist = current_user.specialist
   end
-
 end

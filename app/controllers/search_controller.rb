@@ -5,6 +5,7 @@ class SearchController < ApplicationController
     @specialist = search_params.example
     @search_radius = search_params.radius
     @results = Specialist.search_for(search_params)
+    gon.specialist_url_prefix = request.protocol + request.host_with_port + '/specialistas'
     @map_markers = @results.to_gmaps4rails do |obj, marker|
       marker.infowindow render_to_string(
                             partial: "shared/map_marker",

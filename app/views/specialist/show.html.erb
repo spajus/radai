@@ -44,12 +44,13 @@
           <%= markdown(@specialist.about) %>
         </div>
       <% end %>
+      <a name="atsiliepimai">
       <legend>Atsiliepimai ir rekomendacijos</legend>
       <div class="info-block">
         <div class="like">
-          <div class="fb-like" data-send="true" data-width="500" data-show-faces="false" data-action="like"></div>
+          <div class="fb-like" data-send="true" data-width="570" data-show-faces="false" data-action="like"></div>
         </div>
-        <div class="fb-comments" data-href="<%= request.protocol + request.host_with_port %><%= url_for specialist_slug_path(@specialist.id, @specialist.title_slug) %>" data-num-posts="2" data-width="500"></div>
+        <div class="fb-comments" data-href="<%= request.protocol + request.host_with_port %><%= url_for specialist_slug_path(@specialist.id, @specialist.title_slug) %>" data-num-posts="2" data-width="570"></div>
       </div>
     </div>
     <div class="span6">

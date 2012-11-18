@@ -10,6 +10,30 @@ $ ->
     show_link.hide()
     ($ '#checkboxes').slideDown()
 
+  specialists = $ '.specialist-card'
+  specialists_data = _.map specialists, (sp) ->
+    sp = $ sp
+    id: sp.data('id'), slug: sp.data('slug')
+
+  get_fb_stats = (sp) ->
+    url = "https://api.facebook.com/method/fql.query?query=select%20like_count,comment_count,share_count%20from%20link_stat%20where%20url='#{gon.specialist_url_prefix}/#{sp.id}/#{sp.slug}'&format=json"
+    $.get url, (data) ->
+      update_specialist_card sp, data
+
+  update_specialist_card = (sp, data) ->
+    data = data[0]
+    update_and_show ".likes-#{sp.id}", ".like-count", data.like_count
+    update_and_show ".comments-#{sp.id}", ".comment-count", data.comment_count
+
+  update_and_show = (item, container, value) ->
+    if value > 0
+      item = $ item
+      item.text value
+      item.parents(container).show()
+
+  _.each specialists_data, (sp) ->
+    get_fb_stats sp
+
   address_input = $ '#specialist_full_address'
   latitude_input = $ '#specialist_latitude'
   longitude_input = $ '#specialist_longitude'
@@ -20,7 +44,7 @@ $ ->
 
   if profile_map.length
     # Checkbox limit
-    selector = "input[type=checkbox][name=specialist\\[extra_services_select\\]\\[\\]]" 
+    selector = "input[type=checkbox][name=specialist\\[extra_services_select\\]\\[\\]]"
     $(selector).click ->
       setTimeout ->
         $(selector).not(":checked").attr "disabled", $("#{selector}:checked").length >= 5
@@ -42,11 +66,11 @@ $ ->
           loc = this.getPosition()
           latitude_input.val loc.lat()
           longitude_input.val loc.lng()
-          
+
         map.setCenter loc
       latitude_input.val loc.lat()
       longitude_input.val loc.lng()
-      
+
     else if status == google.maps.GeocoderStatus.ZERO_RESULTS
       profile_map.slideUp() if profile_map.length
     else
