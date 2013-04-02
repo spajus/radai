@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="sC3P4SSjaU0lieyIfz9lk1oeUicGXMeMTpRDuOfwOvc" />
 
-<%= stylesheet_link_tag    "application", :media => "all" %>
+<%#= stylesheet_link_tag    "application", :media => "all" %>
 <%= include_gon %>
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
@@ -18,6 +18,9 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+<link rel="stylesheet" href="http://divshot.github.com/geo-bootstrap/swatch/bootstrap.min.css" type="text/css">
+
+
 
 <% unless content_for?(:opengraph) %>
   <% opengraph title: "Radai",
