@@ -17,8 +17,7 @@ lt:
       primary_service:
         required: "turi būti pasirinkta"
       url:
-        invalid: neatitinka formato (http://...)
-
+        invalid: "neatitinka formato (http://...)"
         no_domain: "does not belong to domain"
       models:
         user:
